@@ -9,6 +9,7 @@
     <h1>Welcome to Bank Sampah</h1>
     <p>This is the main page of the bank sampah system.</p>
     <a href="login.php"><button type="button">Login</button></a>
+    <a href="register.php"><button type="button">Register</button></a>
 
 </body>
 </html>
