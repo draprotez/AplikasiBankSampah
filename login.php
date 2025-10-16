@@ -2,11 +2,11 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Login Admin</title>
+    <title>Login</title>
 </head>
 <body>
     <div class="login-container">
-        <h2>Login Admin</h2>
+        <h2>Login</h2>
         <form action="controller/loginController.php" method="POST">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
@@ -24,5 +24,7 @@
             <button type="submit">Login</button>
         </form>
     </div>
+    <p>belum punya akun?</p><br>
+    <a href="register.php"><button type="button">Register</button></a>
 </body>
 </html>

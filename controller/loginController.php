@@ -1,32 +1,55 @@
 <?php
-session_start(); //untuk memulai session
-include '../config/database.php'; //untuk ke database
+session_start();
+include '../config/database.php';
 
-//untuk ambil data dari form login.php
+// Ambil data dari form login.php
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-//untuk mencari query admin berdasarkan username DAN password
-$sql = "SELECT * FROM admin WHERE username = ? AND password = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("ss", $username, $password);
+// Coba login sebagai admin dulu
+$sql_admin = "SELECT * FROM admin WHERE username = ?";
+$stmt = $conn->prepare($sql_admin);
+$stmt->bind_param("s", $username);
 $stmt->execute();
-$result = $stmt->get_result();
+$result_admin = $stmt->get_result();
 
-//untuk mengecek apakah admin ditemukan (hasil query > 0)
-if ($result->num_rows > 0) {
-    //jika memiliki user akan bisa login
-    $admin = $result->fetch_assoc();
-    $_SESSION['username'] = $admin['username'];
-    $_SESSION['nama_admin'] = $admin['nama_admin'];
-    $_SESSION['is_logged_in'] = true;
-    
-    //untuk ke halaman login
-    header("Location: ../views/dashboardAdmin.php");
-    exit();
-} else {
-    //jika data tidak ada akan menampilkan ini dan kembali ke halaman login
-    header("Location: ../login.php?error=Username atau password salah!");
-    exit();
+if ($result_admin->num_rows > 0) {
+    $admin = $result_admin->fetch_assoc();
+
+    // Verifikasi password (gunakan password_hash di database)
+    if (password_verify($password, $admin['password'])) {
+        $_SESSION['username'] = $admin['username'];
+        $_SESSION['nama_admin'] = $admin['nama_admin'];
+        $_SESSION['role'] = 'admin';
+        $_SESSION['is_logged_in'] = true;
+
+        header("Location: ../views/dashboardAdmin.php");
+        exit();
+    }
 }
+
+// Jika bukan admin, coba login sebagai user
+$sql_user = "SELECT * FROM users WHERE username = ?";
+$stmt = $conn->prepare($sql_user);
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result_user = $stmt->get_result();
+
+if ($result_user->num_rows > 0) {
+    $user = $result_user->fetch_assoc();
+
+    if (password_verify($password, $user['password'])) {
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['nama'] = $user['nama'];
+        $_SESSION['role'] = 'user';
+        $_SESSION['is_logged_in'] = true;
+
+        header("Location: ../views/dashboardUser.php");
+        exit();
+    }
+}
+
+// Jika tidak cocok keduanya
+header("Location: ../login.php?error=Username atau password salah!");
+exit();
 ?>
