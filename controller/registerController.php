@@ -1,26 +1,26 @@
-<?php 
+<?php
 require_once("../config/database.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nama     = trim($_POST['nama']);
-    $alamat   = trim($_POST['alamat']);
-    $no_hp    = trim($_POST['no_hp']);
-    $email    = trim($_POST['email']);
     $username = trim($_POST['username']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $email    = trim($_POST['email']);
+    $password = trim($_POST['password']);
+    $no_hp    = trim($_POST['no_hp']);
+    $alamat   = trim($_POST['alamat']);
 
-    // Validasi dasar
-    if (empty($nama) || empty($alamat) || empty($no_hp) || empty($email) || empty($username) || empty($_POST['password'])) {
+    // Validasi input kosong
+    if (empty($username) || empty($email) || empty($password) || empty($no_hp) || empty($alamat)) {
         header("Location: ../register.php?error=Semua kolom wajib diisi");
         exit();
     }
 
+    // Validasi email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         header("Location: ../register.php?error=Format email tidak valid");
         exit();
     }
 
-    // Cek apakah username sudah digunakan
+    // Cek username sudah digunakan
     $cek = $conn->prepare("SELECT * FROM users WHERE username = ?");
     $cek->bind_param("s", $username);
     $cek->execute();
@@ -31,18 +31,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit();
     }
 
-    // Simpan data ke tabel users
-    $stmt = $conn->prepare("
-        INSERT INTO users (nama, alamat, no_hp, email, username, password)
-        VALUES (?, ?, ?, ?, ?, ?)
-    ");
-    $stmt->bind_param("ssssss", $nama, $alamat, $no_hp, $email, $username, $password);
+    // Enkripsi password
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    // Isi kolom nama dengan username agar tetap sesuai struktur DB
+    $stmt = $conn->prepare("INSERT INTO users (nama, alamat, no_hp, email, username, password)
+                            VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssss", $username, $alamat, $no_hp, $email, $username, $hashedPassword);
 
     if ($stmt->execute()) {
         header("Location: ../login.php?success=Registrasi berhasil, silakan login");
         exit();
     } else {
-        header("Location: ../register.php?error=Terjadi kesalahan saat menyimpan data");
+        header("Location: ../register.php?error=Gagal menyimpan data ke database");
         exit();
     }
 }

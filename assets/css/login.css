@@ -1,0 +1,97 @@
+/* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Warna latar merah seperti di Figma */
+body {
+    background-color: #ffffff;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Kotak putih di tengah */
+.container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.login-card {
+
+    text-align: center;
+}
+
+/* Judul */
+.login-card h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Input */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.input-group input:focus {
+    border-color: #00aa00;
+}
+
+/* Tombol login */
+.btn-login {
+    width: 100%;
+    background-color: #00b300;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #009900;
+}
+
+/* Pesan error */
+.error {
+    color: red;
+    font-size: 13px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* Link daftar */
+.register-text {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #555;
+}
+
+.register-text a {
+    color: #0000ff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
+}

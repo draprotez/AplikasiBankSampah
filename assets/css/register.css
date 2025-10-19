@@ -1,0 +1,111 @@
+/* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+}
+
+.register-card {
+    text-align: center;
+}
+
+/* Judul */
+.register-card h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Input field */
+.input-group {
+    margin-bottom: 18px;
+    position: relative; /* untuk menempatkan ikon mata */
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 40px 10px 12px; /* spasi kanan lebih besar */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.input-group input:focus {
+    border-color: #00aa00;
+}
+
+/* Tombol daftar */
+.btn-register {
+    width: 100%;
+    background-color: #00b300;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-register:hover {
+    background-color: #009900;
+}
+
+/* Pesan error */
+.error {
+    color: red;
+    font-size: 13px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* Link ke login */
+.login-text {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #555;
+}
+
+.login-text a {
+    color: #0000ff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-text a:hover {
+    text-decoration: underline;
+}
+
+/* Ikon mata (toggle password) */
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+    color: #777;
+    user-select: none;
+}
+
+.toggle-password:hover {
+    color: #000;
+}
