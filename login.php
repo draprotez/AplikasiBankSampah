@@ -13,10 +13,12 @@
                 <div class="input-group">
                     <input type="text" id="username" name="username" placeholder="Username / Email" required>
                 </div>
-
-                <div class="input-group">
+                
+                <div class="input-group password-group">
                     <input type="password" id="password" name="password" placeholder="Password" required>
+                    <span class="toggle-password" onclick="togglePassword()">👁️‍🗨️</span>
                 </div>
+
                 <?php
                 if (isset($_GET['error'])) {
                     echo '<p class="error">' . htmlspecialchars($_GET['error']) . '</p>';
@@ -32,20 +34,18 @@
         </div>
     </div>
 
-
-
     <script>
-        // fitur sembunyi password
+        // fungsi toggle untuk menampilkan/menyembunyikan password
         function togglePassword() {
-            const input = document.getElementById("password");
-            const icon = document.querySelector(".toggle-password");
+            const passwordInput = document.getElementById("password");
+            const toggleIcon = document.querySelector(".toggle-password");
 
-            if (input.type === "password") {
-                input.type = "text";
-                icon.textContent = "👁️‍🗨️";
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleIcon.textContent = "👁️‍🗨️"; // ikon bisa disesuaikan
             } else {
-                input.type = "password";
-                icon.textContent = "👁️‍🗨️";
+                passwordInput.type = "password";
+                toggleIcon.textContent = "👁️‍🗨️";
             }
         }
     </script>
