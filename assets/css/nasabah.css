@@ -1,0 +1,137 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #bbbbbb;
+  margin: 0;
+  padding: 20px;
+}
+
+.judul {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.navbar {
+  display: flex;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  justify-content: center;
+  gap: 10px;
+}
+
+.nav-btn,
+.log-btn {
+  border: none;
+  background: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.log-btn {
+    color: #333;
+}
+
+.nav-btn.active,
+.nav-btn:hover {
+  background: #00b26a;
+  color: white;
+}
+
+.log-btn.active,
+.log-btn:hover {
+  background: #ff0000;
+  color: white;
+}
+
+.content {
+  background: white;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+section {
+  display: none;
+}
+
+section.active {
+  display: block;
+}
+
+h2 {
+  margin-top: 0;
+  color: #111;
+}
+
+/* --- Dashboard Style --- */
+.saldo-card {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e7eceb;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+  padding: 20px 25px;
+  margin-top: 20px;
+}
+
+.saldo-label {
+  color: #00b26a;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.saldo-amount {
+  font-size: 32px;
+  font-weight: 800;
+  margin-top: 6px;
+}
+
+/* --- Form --- */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+}
+
+input,
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.btn-green {
+  background: #00b26a;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-green:hover {
+  background: #00955a;
+}
+
+/* --- Table --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 10px;
+}
+
+.status-ok {
+  color: #00b26a;
+  font-weight: 600;
+}

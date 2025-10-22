@@ -17,8 +17,7 @@
           <li><a href="#">Beranda</a></li>
           <li><a href="#">Cara Kerja</a></li>
         </ul>
-        <a href="login.php"><button class="login-btn">Login</button></a>
-    <a href="register.php"><button class="register-btn">Sign Up</button></a>
+        <a href="login.php"><button class="login-btn">Login Nasabah</button></a>
       </div>
     </div>
   </header>
