@@ -27,7 +27,7 @@
     <div class="hero-content">
       <div class="hero-text">
         <h2>Ubah Sampah Jadi Rupiah, Bantu Lingkungan Tercinta</h2>
-        <button class="cta-btn">Gabung Sekarang</button>
+        <a href="register.php"><button class="cta-btn">Gabung Sekarang</button></a>
       </div>
       <img src="assets/images/jus.jpg" alt="Bank Sampah" class="hero-image">
     </div>
