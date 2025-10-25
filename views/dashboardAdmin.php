@@ -19,10 +19,10 @@ if (!isset($_SESSION['is_logged_in']) || $_SESSION['role'] !== 'admin') {
 
   <div class="navbar">
     <button class="nav-btn active" onclick="showSection('dashboard')">Dashboard</button>
-    <button class="nav-btn" onclick="showSection('kelola')">Kelola Nasabah</button>
-    <button class="nav-btn" onclick="showSection('setoran')">Kelola Setoran</button>
-    <button class="nav-btn" onclick="showSection('penarikan')">Kelola Penarikan</button>
-    <button class="nav-btn" onclick="showSection('harga')">Kelola Harga</button>
+    <a href="kelolaNasabahViews.php"><button class="nav-btn" onclick="showSection('kelola')">Kelola Nasabah</button></a>
+    <a href="kelolaSetoranViews.php"><button class="nav-btn" onclick="showSection('setoran')">Kelola Setoran</button></a>
+    <a href="kelolaPenarikanViews.php"><button class="nav-btn" onclick="showSection('penarikan')">Kelola Penarikan</button></a>
+    <a href="kelolaSampahViews.php"><button class="nav-btn" onclick="showSection('harga')">Kelola Harga</button></a>
   </div>
 
   <div class="content">
