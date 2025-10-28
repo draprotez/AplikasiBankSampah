@@ -16,8 +16,9 @@ $result_admin = $stmt->get_result();
 if ($result_admin->num_rows > 0) {
     $admin = $result_admin->fetch_assoc();
 
-    // Verifikasi password admin (plain text for now)
-    if ($password === $admin['password']) {
+    // Gunakan password_verify untuk mengecek hash
+    if (password_verify($password, $admin['password'])) {
+        
         $_SESSION['user_id'] = $admin['id_admin'];
         $_SESSION['username'] = $admin['username'];
         $_SESSION['nama_admin'] = $admin['nama_admin'];
@@ -30,6 +31,7 @@ if ($result_admin->num_rows > 0) {
 }
 
 // Jika bukan admin, coba login sebagai user (cek username atau email)
+// Bagian ini sudah benar
 $sql_users = "SELECT * FROM users WHERE username = ? OR email = ?";
 $stmt = $conn->prepare($sql_users);
 $stmt->bind_param("ss", $login_input, $login_input);

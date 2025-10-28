@@ -40,7 +40,9 @@
 
                 <button type="submit" class="btn-register">Daftar</button>
             </form>
-
+            <p>
+                <a href="views/registerAdminViews.php">admin</a>
+            </p>
             <p class="login-text">
                 Sudah punya akun? <a href="login.php">Login</a>
             </p>

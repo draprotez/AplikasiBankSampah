@@ -27,7 +27,6 @@
 
                 <button type="submit" class="btn-login">Login</button>
             </form>
-
             <p class="register-text">
                 Belum Punya Akun?<a href="register.php">Daftar Disini</a>
             </p>
