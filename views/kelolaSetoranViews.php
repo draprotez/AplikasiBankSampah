@@ -25,6 +25,7 @@ $setoran_list = getAllSetoran($conn);
     </style>
 </head>
 <body>
+    <?php include '../includes/header.php'; ?>
     <div class="container">
         <h1>Kelola Setoran Nasabah</h1>
         <a href="createSetoranViews.php" class="btn btn-tambah">Tambah Setoran Baru</a>

@@ -34,10 +34,12 @@ $users = getAllUsers($conn);
     </style>
 </head>
 <body>
+    <?php include '../includes/header.php'; ?>
     <div class="container">
         <h1>Kelola Nasabah (Users)</h1>
         
         <a href="createNasabahViews.php" class="btn btn-tambah">Tambah Nasabah Baru</a>
+        <input type="text" id="search-kelola" class="search" placeholder="Cari Data Nasabah...">
 
         <?php
         // Menampilkan pesan sukses/error dari URL

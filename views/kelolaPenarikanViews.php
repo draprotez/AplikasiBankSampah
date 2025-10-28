@@ -25,6 +25,7 @@ $penarikan_list = getAllPenarikan($conn);
     </style>
 </head>
 <body>
+    <?php include '../includes/header.php'; ?>
     <div class="container">
         <h1>Histori Penarikan Saldo</h1>
         <a href="createPenarikanViews.php" class="btn btn-tambah">Lakukan Penarikan Baru</a>

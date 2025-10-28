@@ -25,6 +25,7 @@ $sampah_list = getAllSampah($conn);
     </style>
 </head>
 <body>
+    <?php include '../includes/header.php'; ?>
     <div class="container">
         <h1>Kelola Harga & Jenis Sampah</h1>
         
