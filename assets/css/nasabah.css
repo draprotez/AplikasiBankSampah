@@ -56,6 +56,37 @@ body {
   border: 1px solid var(--border-color);
 }
 
+.btn {
+  padding: 8px 20px;
+  text-decoration: none;
+  border-radius: 20px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 8px;
+  transition: var(--transition);
+  display: inline-block;
+  text-align: center;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  text-decoration: none;
+  color: white;
+}
+
+/* Button Variants */
+.btn-tambah {
+  background-color: var(--success-color);
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 15px;
+  padding: 12px 20px;
+  border-radius: var(--border-radius);
+}
+
 .nav-btn {
   background: none;
   border: none;

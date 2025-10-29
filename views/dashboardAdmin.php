@@ -6,7 +6,8 @@ if(!isset($_SESSION['is_logged_in']) || $_SESSION['role'] !=='admin') {
 }
 
 include '../config/database.php';
-include '../models/setoranModels.php';
+// Pastikan model ini mengambil 'nama_user' dari tabel users melalui JOIN
+include '../models/setoranModels.php'; 
 
 $setoran_list = getAllSetoran($conn);
 ?>
@@ -35,38 +36,34 @@ $setoran_list = getAllSetoran($conn);
     <?php endif; ?>
 
     <div class="word">
-      <h3>Laporan</h3>
+      <h3>Laporan Setoran</h3>
     </div>
     <div class="table-card">
       <table>
         <thead>
           <tr>
+            <th class="col-nama">Nama Nasabah</th> 
+            
             <th class="col-nama">Nama Sampah</th>
             <th class="col-tanggal">Tanggal</th>
             <th class="col-berat">Berat (kg)</th>
             <th class="col-harga">Total Harga (Rp)</th>
-            <th class="col-aksi">Aksi</th>
           </tr>
         </thead>
         <tbody>
           <?php if (empty($setoran_list)): ?>
             <tr>
-              <td colspan="5" class="text-center">Belum ada data setoran.</td>
+              <td colspan="6" class="text-center">Belum ada data setoran.</td> 
             </tr>
           <?php else: ?>
             <?php foreach ($setoran_list as $setoran): ?>
               <tr>
+                <td class="col-nama"><?php echo htmlspecialchars($setoran['nama_user']); ?></td> 
+                
                 <td class="col-nama"><?php echo htmlspecialchars($setoran['nama_jenis']); ?></td>
                 <td class="col-tanggal"><?php echo date("d-m-Y", strtotime($setoran['tanggal_setor'])); ?></td>
                 <td class="col-berat"><?php echo htmlspecialchars($setoran['berat_kg']); ?></td>
                 <td class="col-harga"><?php echo number_format($setoran['total_harga'], 0, ',', '.'); ?></td>
-                <td class="col-aksi">
-                  <a href="editSetoranView.php?id=<?php echo $setoran['id_setoran']; ?>" 
-                     class="btn btn-edit">Edit</a>
-                  <a href="../controller/deleteSetoranController.php?id=<?php echo $setoran['id_setoran']; ?>" 
-                     class="btn btn-delete" 
-                     onclick="return confirm('Yakin ingin hapus data ini?');">Hapus</a>
-                </td>
               </tr>
             <?php endforeach; ?>
           <?php endif; ?>
@@ -74,7 +71,18 @@ $setoran_list = getAllSetoran($conn);
       </table>
     </div>
     <br>
-    <button type="button" class="btn btn-tambah" style="background-color: red;" onclick="window.location.href='../logout.php'">Logout</button>
+    
+    <button type="button" 
+        onclick="window.location.href='../controller/logoutController.php'" 
+        style="
+            background-color: #FF0000; color: #FFFFFF; padding: 10px 25px; 
+            border: none; border-radius: 8px; font-family: 'Poppins', sans-serif; 
+            font-size: 15px; font-weight: 500; cursor: pointer; 
+            text-align: center; text-decoration: none; display: inline-block; 
+            margin-top: 20px; 
+        ">
+        Logout
+    </button>
   </div>
 </body>
 </html>

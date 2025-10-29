@@ -71,6 +71,26 @@ $q3 = $conn->query("
         <?php endif; ?>
       </table>
     </section>
+    <br>
+    <button type="button" 
+        onclick="window.location.href='../controller/logoutController.php'" 
+        style="
+            background-color: #FF0000; /* Warna merah */
+            color: #FFFFFF;           /* Warna teks putih */
+            padding: 10px 25px;       /* Padding atas/bawah & kiri/kanan */
+            border: none;             /* Hapus border */
+            border-radius: 8px;       /* Sudut melengkung */
+            font-family: 'Poppins', sans-serif; /* Font */
+            font-size: 15px;          /* Ukuran font */
+            font-weight: 500;         /* Ketebalan font */
+            cursor: pointer;          /* Kursor tangan */
+            text-align: center;       /* Teks di tengah */
+            text-decoration: none;    /* Hapus garis bawah */
+            display: inline-block;    /* Agar padding berfungsi */
+            margin-top: 20px;         /* Jarak dari atas (opsional) */
+        ">
+    Logout
+</button>
   </div>
 
   <script>

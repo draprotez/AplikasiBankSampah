@@ -26,7 +26,7 @@ switch ($action) {
             // (Logika validasi saldo Anda...)
             if ($jumlah > $saldo_tersedia) {
                 // PENTING: Ubah 'error' menjadi 'error_popup'
-                header("Location: ../view/kelolaPenarikanView.php?error_popup=Saldo tidak cukup!"); 
+                header("Location: ../views/kelolaPenarikanViews.php?error_popup=Saldo tidak cukup!"); 
                 exit();
             }
 
@@ -41,10 +41,10 @@ switch ($action) {
             // 4. Panggil Model Insert
             $result = insertPenarikan($conn, $data);
             if ($result) {
-                header("Location: ../view/kelolaPenarikanView.php?success=Penarikan berhasil!");
+                header("Location: ../views/kelolaPenarikanViews.php?success=Penarikan berhasil!");
             } else {
                 // PENTING: Ubah 'error' menjadi 'error_popup'
-                header("Location: ../view/kelolaPenarikanView.php?error_popup=Gagal menyimpan!"); 
+                header("Location: ../views/kelolaPenarikanViews.php?error_popup=Gagal menyimpan!"); 
             }
         }
         break;
@@ -56,7 +56,7 @@ switch ($action) {
             $id = $_GET['id'];
             $result = deletePenarikan($conn, $id);
             if ($result) {
-                header("Location: ../views/kelolaPenarikanViews.php?success=Data penarikan berhasil dihapus (saldo dikembalikan).");
+                header("Location: ../views/kelolaPenarikanViews.php?success=Penarikan berhasil dicatat!");
             } else {
                 header("Location: ../views/kelolaPenarikanViews.php?error=Gagal menghapus data!");
             }
