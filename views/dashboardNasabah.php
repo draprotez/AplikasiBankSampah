@@ -150,6 +150,9 @@ usort($transaksi, function($a, $b) {
 </button>
   </div>
 
+      <?php include '../includes/footer.php'; ?>
+
+
   <script>
     function showSection(id) {
         // Sembunyikan semua section & nonaktifkan semua tombol nav-btn
