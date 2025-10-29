@@ -121,6 +121,8 @@ $users = getAllUsers($conn);
         </div>
     </div>
 
+    <?php include '../includes/footer.php'; ?>
+    
     <script>
         // Fungsi untuk membuka popup
         function openForm(modalId) {

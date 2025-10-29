@@ -72,17 +72,7 @@ $setoran_list = getAllSetoran($conn);
     </div>
     <br>
     
-    <button type="button" 
-        onclick="window.location.href='../controller/logoutController.php'" 
-        style="
-            background-color: #FF0000; color: #FFFFFF; padding: 10px 25px; 
-            border: none; border-radius: 8px; font-family: 'Poppins', sans-serif; 
-            font-size: 15px; font-weight: 500; cursor: pointer; 
-            text-align: center; text-decoration: none; display: inline-block; 
-            margin-top: 20px; 
-        ">
-        Logout
-    </button>
+    <button type="button" class="btn btn-tambah" style="background-color: red;" onclick="window.location.href='../logout.php'">Logout</button>
   </div>
   <?php include '../includes/footer.php'; ?>
 </body>

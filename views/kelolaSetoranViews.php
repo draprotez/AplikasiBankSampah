@@ -118,6 +118,8 @@ $sampah_list = getAllSampah($conn);
         </div>
     </div>
 
+    <?php include '../includes/footer.php'; ?>
+
     <script>
         // Fungsi untuk membuka popup
         function openForm(modalId) {

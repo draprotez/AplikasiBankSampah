@@ -1,3 +1,16 @@
+<?php
+// --- TAMBAHKAN BLOK PHP INI DI PALING ATAS ---
+include 'config/database.php'; // Sesuaikan path ke file koneksi database Anda
+
+// Ambil data dari tabel jenis_sampah
+$query_jenis_sampah = $conn->query("SELECT nama_jenis, harga_per_kg FROM jenis_sampah ORDER BY nama_jenis ASC");
+$jenis_sampah_list = []; // Siapkan array kosong
+if ($query_jenis_sampah && $query_jenis_sampah->num_rows > 0) {
+    $jenis_sampah_list = $query_jenis_sampah->fetch_all(MYSQLI_ASSOC);
+}
+// --- AKHIR BLOK PHP BARU ---
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -106,24 +119,29 @@
 
     <h3>Sampah Apa Saja yang Diterima?</h3>
     <table>
-      <tr>
-        <th>Jenis Sampah</th>
-        <th>Berat(kg)</th>
-        <th>Lapak(kg)</th>
-        <th>Nasabah(kg)</th>
-      </tr>
-      <tr><td>Botol Plastik</td><td>10</td><td>Rp 2.000</td><td>20</td></tr>
-      <tr><td>Kertas</td><td>5</td><td>Rp 1.000</td><td>30</td></tr>
-      <tr><td>Kaleng</td><td>3</td><td>Rp 3.000</td><td>12</td></tr>
-      <tr><td>Kardus</td><td>4</td><td>Rp 1.500</td><td>6</td></tr>
+      <thead> <tr>
+          <th>Jenis Sampah</th>
+          <th>Harga per Kg (Rp)</th>
+          </tr>
+      </thead>
+      <tbody> <?php if (empty($jenis_sampah_list)): ?>
+          <tr>
+            <td colspan="2" style="text-align: center;">Data jenis sampah belum tersedia.</td>
+            </tr>
+        <?php else: ?>
+          <?php foreach ($jenis_sampah_list as $sampah): ?>
+            <tr>
+              <td><?php echo htmlspecialchars($sampah['nama_jenis']); ?></td>
+              <td><?php echo number_format($sampah['harga_per_kg'], 0, ',', '.'); ?></td>
+              </tr>
+          <?php endforeach; ?>
+        <?php endif; ?>
+      </tbody>
     </table>
   </section>
 
   <!-- Footer -->
-  <footer>
-    <p>Alamat Bank Sampah Anda | Hubungi Kami: 0812-3456-7890</p>
-    <p>© 2025 Bank Sampah Anda. All Rights Reserved.</p>
-  </footer>
+  <?php include 'includes/footer.php'; ?>
 
   <script>
     const prev = document.querySelector('.prev');
