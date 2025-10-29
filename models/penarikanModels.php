@@ -19,12 +19,17 @@ function getAllPenarikan($conn) {
  * Memasukkan data penarikan baru
  */
 function insertPenarikan($conn, $data) {
-    $sql = "INSERT INTO penarikan (id_user, jumlah, tanggal_penarikan) 
-            VALUES (?, ?, ?)";
+    // 1. Ubah SQL
+    $sql = "INSERT INTO penarikan (id_user, jumlah, metode, tanggal_penarikan) 
+            VALUES (?, ?, ?, ?)";
+            
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ids", 
+    
+    // 2. Ubah bind_param (tambahkan 's' untuk string)
+    $stmt->bind_param("idss", 
         $data['id_user'], 
         $data['jumlah'], 
+        $data['metode'], // <-- TAMBAHKAN BARIS INI
         $data['tanggal_penarikan']
     );
     return $stmt->execute();

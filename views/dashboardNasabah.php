@@ -39,13 +39,8 @@ $q3 = $conn->query("
   <link rel="stylesheet" href="../assets/css/nasabah.css">
 </head>
 <body>
-  <h3 class="judul">Dashboard Nasabah</h3>
 
-  <div class="navbar">
-    <button class="nav-btn active" onclick="showSection('dashboard')">Dashboard</button>
-    <button class="nav-btn" onclick="showSection('riwayat')">Riwayat Transaksi</button>
-    <a href="../logout.php" class="log-btn">Logout</a>
-  </div>
+<?php include '../includes/headerNasabah.php'; ?>
 
   <div class="content">
     <!-- Dashboard -->
@@ -55,33 +50,6 @@ $q3 = $conn->query("
         <p class="saldo-label">Saldo Anda</p>
         <h1 class="saldo-amount">Rp <?= number_format($saldo, 0, ',', '.'); ?></h1>
       </div>
-    </section>
-
-    <!-- Setor Sampah -->
-    <section id="setor">
-      <h2>Setor Sampah</h2>
-      <form class="form">
-        <label>Jenis Sampah</label>
-        <input type="text" placeholder="Contoh: Botol Plastik">
-        <label>Berat (Kg)</label>
-        <input type="number" placeholder="Masukkan berat sampah">
-        <button class="btn-green">Kirim Setoran</button>
-      </form>
-    </section>
-
-    <!-- Penarikan -->
-    <section id="penarikan">
-      <h2>Penarikan Dana</h2>
-      <form class="form">
-        <label>Jumlah Penarikan</label>
-        <input type="number" placeholder="Masukkan jumlah penarikan">
-        <label>Metode</label>
-        <select>
-          <option>Ambil Tunai</option>
-          <option>Transfer Bank</option>
-        </select>
-        <button class="btn-green">Ajukan Penarikan</button>
-      </form>
     </section>
 
     <!-- Riwayat -->
@@ -107,11 +75,48 @@ $q3 = $conn->query("
 
   <script>
     function showSection(id) {
-      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
-      document.querySelectorAll(".nav-btn").forEach(btn => btn.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
-      event.target.classList.add("active");
+        // Sembunyikan semua section & nonaktifkan semua tombol nav-btn
+        document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+        document.querySelectorAll(".nav-btn").forEach(btn => btn.classList.remove("active"));
+        
+        // Tampilkan section yang dipilih
+        const sectionToShow = document.getElementById(id);
+        if (sectionToShow) {
+            sectionToShow.classList.add("active");
+            // console.log("Showing section:", id); // Untuk debugging
+        } else {
+            // console.error("Section not found:", id); // Untuk debugging
+        }
+        
+        // Aktifkan tombol yang sesuai (menggunakan ID tombol btn-...)
+        const buttonToActivate = document.getElementById('btn-' + id); 
+        if (buttonToActivate) {
+            buttonToActivate.classList.add("active");
+            // console.log("Activating button:", 'btn-' + id); // Untuk debugging
+        } else {
+             // console.warn("Button not found for section:", id); // Untuk debugging
+        }
     }
-  </script>
+
+    // Kode ini akan berjalan HANYA SEKALI saat halaman selesai dimuat
+    window.addEventListener('DOMContentLoaded', (event) => {
+        // console.log("DOM Loaded. Checking URL parameter..."); // Untuk debugging
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const sectionParam = urlParams.get('section');
+        
+        // console.log("URL section parameter:", sectionParam); // Untuk debugging
+
+        // Tentukan section mana yang harus ditampilkan pertama kali
+        let initialSection = 'dashboard'; // Defaultnya dashboard
+        if (sectionParam === 'riwayat') { // Jika URL bilang ?section=riwayat
+            initialSection = 'riwayat';
+        } 
+        // Anda bisa tambahkan 'else if' lain jika ada section lain yang bisa di-link
+
+        // console.log("Initial section to show:", initialSection); // Untuk debugging
+        showSection(initialSection); // Panggil fungsi untuk menampilkannya
+    });
+</script>
 </body>
 </html>

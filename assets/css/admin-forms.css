@@ -1,0 +1,515 @@
+/* ===== CSS TERPUSAT UNUK SEMUA FORM ADMIN ===== */
+/* File: assets/css/admin-forms.css */
+
+/* ----- 1. VARIABLES & RESET ----- */
+:root {
+  --primary-color: #007bff;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --info-color: #17a2b8;
+  --dark-color: #343a40;
+  --light-color: #f8f9fa;
+  --border-color: #e9ecef;
+  --text-color: #333;
+  --text-muted: #6c757d;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 6px 20px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+  --border-radius-lg: 16px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ----- 2. TYPOGRAPHY & BASE STYLES ----- */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f7f9fc;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1300px;
+  margin: 30px auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 28px;
+  color: var(--text-color);
+}
+
+h2 {
+  font-size: 22px;
+  color: #444;
+}
+
+.word {
+  text-align: center;
+}
+
+/* ----- 3. HEADER NAVIGATION ----- */
+.header-nav {
+  background-color: #ffffff;
+  padding: 0 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-nav nav {
+  display: flex;
+  gap: 0;
+}
+
+.header-nav nav a {
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 20px 30px;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 15px;
+  position: relative;
+  transition: var(--transition);
+  border-bottom: 3px solid transparent;
+}
+
+.header-nav nav a:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+  color: var(--primary-color);
+}
+
+.header-nav nav a.active {
+  font-weight: 600;
+  color: #2c5530;
+  border-bottom: 3px solid #8ac926;
+  background-color: rgba(138, 201, 38, 0.05);
+}
+
+/* ----- 4. SEARCH & FILTER COMPONENTS ----- */
+.search-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  width: 350px;
+  padding: 12px 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  transition: var(--transition);
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* ----- 5. TABLE STYLES ----- */
+.table-card {
+  background-color: #ffffff;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  table-layout: fixed;
+}
+
+th {
+  text-align: center;
+  padding: 20px 15px;
+  color: #888;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-bottom: 2px solid #f4f4f4;
+  background-color: var(--light-color);
+}
+
+td {
+  padding: 18px 15px;
+  border-bottom: 1px solid #f4f4f4;
+  font-size: 15px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: var(--light-color);
+  transition: var(--transition);
+}
+
+/* Column Width Classes */
+.col-id { width: 10%; text-align: center; }
+.col-tanggal { width: 15%; text-align: center; }
+.col-nama { width: 25%; text-align: left; padding-left: 20px; }
+.col-jenis { width: 18%; text-align: left; padding-left: 20px; }
+.col-kategori { width: 20%; text-align: center; }
+.col-metode { width: 20%; text-align: center; }
+.col-berat { width: 12%; text-align: center; }
+.col-jumlah { width: 25%; text-align: right; padding-right: 20px; }
+.col-harga { width: 20%; text-align: right; padding-right: 20px; }
+.col-saldo { width: 25%; text-align: right; padding-right: 20px; }
+.col-aksi { width: 20%; text-align: center; }
+
+/* ----- 6. BUTTON STYLES ----- */
+.btn {
+  padding: 8px 20px;
+  text-decoration: none;
+  border-radius: 20px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 8px;
+  transition: var(--transition);
+  display: inline-block;
+  text-align: center;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  text-decoration: none;
+  color: white;
+}
+
+/* Button Variants */
+.btn-tambah {
+  background-color: var(--success-color);
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 15px;
+  padding: 12px 20px;
+  border-radius: var(--border-radius);
+}
+
+.btn-konfirmasi { background-color: var(--primary-color); }
+.btn-edit { background-color: var(--success-color); }
+.btn-delete { background-color: var(--danger-color); }
+
+.btn-submit {
+  background-color: var(--success-color);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-right: 10px;
+}
+
+.btn-submit:hover {
+  background-color: #218838;
+}
+
+/* ----- 7. FORM STYLES ----- */
+.form-container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.form-control {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.form-select {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* ----- 8. MODAL/POPUP STYLES ----- */
+.modal-overlay {
+  display: none; /* Sembunyi secara default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); /* Hitam transparan */
+  z-index: 1000; /* Tampil di atas segalanya */
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-form {
+  background-color: #EAEAEA; /* Warna abu-abu dari gambar */
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  width: 400px;
+  max-width: 90vw;
+  box-sizing: border-box;
+}
+
+.popup-form input[type="text"],
+.popup-form input[type="password"],
+.popup-form input[type="email"],
+.popup-form input[type="number"],
+.popup-form textarea,
+.popup-form select {
+  width: 100%;
+  padding: 14px 20px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px; /* Sesuai gambar */
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  transition: var(--transition);
+}
+
+.popup-form input:focus,
+.popup-form textarea:focus,
+.popup-form select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.popup-form label {
+  display: none; /* Sembunyikan label */
+}
+
+.popup-form .form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.popup-form .btn {
+  padding: 12px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 16px;
+  flex: 1;
+  margin: 0;
+}
+
+.popup-form .btn-simpan {
+  background-color: var(--success-color); /* Hijau "Simpan" */
+}
+
+.popup-form .btn-batal {
+  background-color: var(--danger-color); /* Merah "Batal" */
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+/* ----- 9. ALERT & NOTIFICATION STYLES ----- */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: var(--border-radius);
+  font-size: 15px;
+  border: 1px solid transparent;
+}
+
+.alert-success { background-color: #d4edda; color: #155724; border-color: #c3e6cb; }
+.alert-error { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }
+.alert-warning { background-color: #fff3cd; color: #856404; border-color: #ffeaa7; }
+.alert-info { background-color: #d1ecf1; color: #0c5460; border-color: #bee5eb; }
+
+/* ----- 10. UTILITY CLASSES ----- */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 10px; }
+.mb-2 { margin-bottom: 20px; }
+.mb-3 { margin-bottom: 30px; }
+
+.mt-1 { margin-top: 10px; }
+.mt-2 { margin-top: 20px; }
+.mt-3 { margin-top: 30px; }
+
+/* Link Styles */
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+.cancel-link {
+  display: inline-block;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 20px;
+  border: 1px solid var(--text-muted);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.cancel-link:hover {
+  color: #495057;
+  background-color: var(--light-color);
+  text-decoration: none;
+}
+
+/* Divider */
+hr {
+  border: none;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 25px 0;
+}
+
+/* ----- 11. RESPONSIVE DESIGN ----- */
+@media (max-width: 768px) {
+  .container { width: 95%; margin: 20px auto; }
+  .table-card { padding: 15px; }
+  th, td { padding: 12px 8px; font-size: 14px; }
+  .btn { padding: 6px 12px; font-size: 12px; margin-right: 5px; margin-bottom: 5px; }
+  .header-nav nav a { padding: 15px 20px; font-size: 14px; }
+  .search-bar { width: 100%; }
+  .form-control, .form-select { max-width: 100%; }
+  .popup-form { width: 90%; padding: 20px 25px; }
+  .popup-form .form-actions { flex-direction: column; gap: 10px; }
+  /* Reset column widths on mobile */
+  .col-id, .col-tanggal, .col-nama, .col-jenis, .col-kategori, .col-metode, .col-berat, .col-jumlah, .col-harga, .col-saldo, .col-aksi { width: auto; }
+}
+
+@media (max-width: 480px) {
+  .header-nav nav { flex-wrap: wrap; justify-content: center; }
+  .header-nav nav a { padding: 12px 15px; font-size: 13px; flex: 1; min-width: 120px; text-align: center; }
+  h1 { font-size: 24px; }
+  h2 { font-size: 20px; }
+  .popup-form { padding: 15px 20px; }
+}
+
+/* ----- CSS TAMBAHAN UNTUK POPUP KONFIRMASI DELETE ----- */
+.popup-confirm {
+  background-color: #ffffff; /* Latar putih */
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  text-align: center;
+}
+
+.popup-confirm p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.popup-confirm .confirm-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.popup-confirm .btn-confirm-delete {
+  background-color: var(--danger-color); /* Merah */
+  flex: 1;
+  /* Tambahkan style button dasar jika belum ada */
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 20px;
+  color: white;
+  transition: var(--transition);
+}
+
+.popup-confirm .btn-confirm-cancel {
+  background-color: #6c757d; /* Abu-abu */
+  flex: 1;
+  /* Tambahkan style button dasar jika belum ada */
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 20px;
+  color: white;
+  transition: var(--transition);
+}
+
+.popup-confirm .btn-confirm-delete:hover,
+.popup-confirm .btn-confirm-cancel:hover {
+  transform: scale(1.05);
+}

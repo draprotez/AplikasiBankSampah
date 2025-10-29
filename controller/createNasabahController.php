@@ -35,8 +35,8 @@ if (isset($_POST['tambah_user'])) {
 
     // 4. Arahkan kembali ke View berdasarkan hasil
     if ($result === true) {
-        // Sukses
-        header("Location: ../views/createNasabahViews.php?success=User baru berhasil ditambahkan!");
+        // INI YANG BENAR (KEMBALI KE HALAMAN DAFTAR NASABAH)
+        header("Location: ../views/kelolaNasabahViews.php?success=Nasabah baru berhasil ditambahkan!");
     } else {
         // Gagal (Pesan error didapat dari model)
         header("Location: ../views/createNasabahViews.php?error=" . urlencode($result));

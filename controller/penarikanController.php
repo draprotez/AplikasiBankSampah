@@ -11,9 +11,6 @@ if (!isset($_SESSION['is_logged_in'])) { die("ERROR: Akses tidak sah!"); }
 $action = $_POST['action'] ?? $_GET['action'] ?? '';
 
 switch ($action) {
-    /**
-     * CASE CREATE
-     */
     case 'create':
         if (isset($_POST['tarik_saldo'])) {
             
@@ -21,39 +18,36 @@ switch ($action) {
             $id_user = $_POST['id_user'];
             $jumlah = (float)$_POST['jumlah'];
             $tanggal = $_POST['tanggal_penarikan'];
+            $metode = $_POST['metode']; // <-- TAMBAHKAN BARIS INI
 
-            // 2. LOGIKA VALIDASI SALDO
+            // 2. Validasi Saldo
             $saldo_tersedia = getSaldoUser($conn, $id_user);
-
-            if ($jumlah <= 0) {
-                // Tidak boleh tarik 0 atau minus
-                header("Location: ../views/createPenarikanViews.php?error=Jumlah penarikan tidak boleh nol atau negatif!");
-                exit();
-            }
-
+            
+            // (Logika validasi saldo Anda...)
             if ($jumlah > $saldo_tersedia) {
-                // Saldo tidak cukup
-                header("Location: ../views/createPenarikanViews.php?error=Saldo tidak cukup! Saldo tersedia: Rp " . number_format($saldo_tersedia, 0, ',', '.'));
+                // PENTING: Ubah 'error' menjadi 'error_popup'
+                header("Location: ../view/kelolaPenarikanView.php?error_popup=Saldo tidak cukup!"); 
                 exit();
             }
 
-            // 3. Jika Lolos Validasi, siapkan data
+            // 3. Siapkan data
             $data = [
                 'id_user' => $id_user,
                 'jumlah' => $jumlah,
-                'tanggal_penarikan' => $tanggal
+                'tanggal_penarikan' => $tanggal,
+                'metode' => $metode // <-- TAMBAHKAN BARIS INI
             ];
 
             // 4. Panggil Model Insert
             $result = insertPenarikan($conn, $data);
             if ($result) {
-                header("Location: ../views/kelolaPenarikanViews.php?success=Penarikan berhasil dicatat!");
+                header("Location: ../view/kelolaPenarikanView.php?success=Penarikan berhasil!");
             } else {
-                header("Location: ../views/createPenarikanViews.php?error=Gagal menyimpan data ke database!");
+                // PENTING: Ubah 'error' menjadi 'error_popup'
+                header("Location: ../view/kelolaPenarikanView.php?error_popup=Gagal menyimpan!"); 
             }
         }
         break;
-
     /**
      * CASE DELETE
      */
