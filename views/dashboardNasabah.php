@@ -21,14 +21,38 @@ $total_tarik = $q2->fetch_assoc()['total_tarik'] ?? 0;
 // Hitung saldo akhir
 $saldo = $total_setor - $total_tarik;
 
-// Ambil riwayat transaksi setoran
-$q3 = $conn->query("
-  SELECT s.tanggal_setor, j.nama_jenis, s.berat_kg, s.total_harga
+$transaksi = []; // Array kosong untuk menampung semua transaksi
+
+// 1. Ambil riwayat transaksi setoran
+$q_setoran = $conn->query("
+  SELECT s.tanggal_setor AS tanggal, j.nama_jenis, s.berat_kg, s.total_harga AS nominal, 'Setoran' AS tipe
   FROM setoran s
   JOIN jenis_sampah j ON s.id_jenis = j.id_jenis
   WHERE s.id_user = '$id_user'
-  ORDER BY s.tanggal_setor DESC
 ");
+if ($q_setoran->num_rows > 0) {
+    while ($row = $q_setoran->fetch_assoc()) {
+        $transaksi[] = $row;
+    }
+}
+
+// 2. Ambil riwayat transaksi penarikan
+$q_penarikan = $conn->query("
+  SELECT tanggal_penarikan AS tanggal, metode AS nama_jenis, NULL AS berat_kg, jumlah AS nominal, 'Penarikan' AS tipe
+  FROM penarikan
+  WHERE id_user = '$id_user'
+");
+if ($q_penarikan->num_rows > 0) {
+     while ($row = $q_penarikan->fetch_assoc()) {
+        $transaksi[] = $row; // Tambahkan ke array transaksi
+    }
+}
+
+// 3. Urutkan semua transaksi berdasarkan tanggal (terbaru dulu)
+usort($transaksi, function($a, $b) {
+    return strtotime($b['tanggal']) - strtotime($a['tanggal']);
+});
+
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -56,19 +80,52 @@ $q3 = $conn->query("
     <section id="riwayat">
       <h2>Riwayat Transaksi</h2>
       <table>
-        <tr><th>Tanggal Pengajuan</th><th>Jenis Sampah</th><th>Berat(Kg)</th><th>Harga</th></tr>
-        <?php if ($q3->num_rows > 0): ?>
-          <?php while ($row = $q3->fetch_assoc()): ?>
+        <thead>
             <tr>
-              <td><?= htmlspecialchars($row['tanggal_setor']); ?></td>
-              <td><?= htmlspecialchars($row['nama_jenis']); ?></td>
-              <td><?= htmlspecialchars($row['berat_kg']); ?> Kg</td>
-              <td>Rp <?= number_format($row['total_harga'], 0, ',', '.'); ?></td>
+                <th>Tanggal</th>
+                <th>Jenis Transaksi</th>
+                <th>Detail</th>
+                <th>Nominal (Rp)</th>
             </tr>
-          <?php endwhile; ?>
-        <?php else: ?>
-          <tr><td colspan="4" style="text-align:center;">Belum ada transaksi</td></tr>
-        <?php endif; ?>
+        </thead>
+        <tbody>
+            <?php if (empty($transaksi)): ?>
+              <tr><td colspan="4" style="text-align:center;">Belum ada transaksi</td></tr>
+            <?php else: ?>
+              <?php foreach ($transaksi as $trx): ?>
+                <tr>
+                  <td><?= htmlspecialchars($trx['tanggal']); ?></td>
+                  <td>
+                      <?php if ($trx['tipe'] == 'Setoran'): ?>
+                          <span style="color: green; font-weight: bold;">Setoran</span>
+                      <?php else: ?>
+                          <span style="color: red; font-weight: bold;">Penarikan</span>
+                      <?php endif; ?>
+                  </td>
+                  <td>
+                      <?php 
+                      // Tampilkan detail berbeda untuk setoran dan penarikan
+                      if ($trx['tipe'] == 'Setoran') {
+                          echo htmlspecialchars($trx['nama_jenis']) . ' (' . htmlspecialchars($trx['berat_kg']) . ' Kg)';
+                      } else {
+                          echo 'Metode: ' . htmlspecialchars($trx['nama_jenis']); // nama_jenis berisi metode untuk penarikan
+                      }
+                      ?>
+                  </td>
+                  <td style="text-align: right;">
+                      <?php 
+                      // Tampilkan nominal positif untuk setoran, negatif untuk penarikan
+                      if ($trx['tipe'] == 'Setoran') {
+                          echo '+ ' . number_format($trx['nominal'], 0, ',', '.');
+                      } else {
+                          echo '- ' . number_format($trx['nominal'], 0, ',', '.');
+                      }
+                      ?>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            <?php endif; ?>
+        </tbody>
       </table>
     </section>
     <br>
