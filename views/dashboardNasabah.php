@@ -56,7 +56,7 @@ $q3 = $conn->query("
     <section id="riwayat">
       <h2>Riwayat Transaksi</h2>
       <table>
-        <tr><th>Tanggal</th><th>Jenis</th><th>Berat</th><th>Nominal</th></tr>
+        <tr><th>Tanggal Pengajuan</th><th>Jenis Sampah</th><th>Berat(Kg)</th><th>Harga</th></tr>
         <?php if ($q3->num_rows > 0): ?>
           <?php while ($row = $q3->fetch_assoc()): ?>
             <tr>
@@ -73,7 +73,7 @@ $q3 = $conn->query("
     </section>
     <br>
     <button type="button" 
-        onclick="window.location.href='../controller/logoutController.php'" 
+        onclick="window.location.href='../logout.php'" 
         style="
             background-color: #FF0000; /* Warna merah */
             color: #FFFFFF;           /* Warna teks putih */

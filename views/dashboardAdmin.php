@@ -84,5 +84,6 @@ $setoran_list = getAllSetoran($conn);
         Logout
     </button>
   </div>
+  <?php include '../includes/footer.php'; ?>
 </body>
 </html>

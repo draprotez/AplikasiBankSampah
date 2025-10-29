@@ -1,0 +1,28 @@
+.main-footer {
+  background-color: #f1f1f1; /* Warna latar abu-abu muda */
+  color: #555; /* Warna teks abu-abu */
+  text-align: center;
+  padding: 15px 0; /* Jarak atas/bawah */
+  margin-top: 30px; /* Jarak dari konten di atasnya */
+  border-top: 1px solid #ddd; /* Garis tipis di atas footer */
+  font-size: 14px;
+}
+
+.main-footer .footer-content {
+  width: 90%;
+  max-width: 1300px; /* Samakan dengan .container jika perlu */
+  margin: 0 auto; /* Tengahlan konten */
+}
+
+.main-footer p {
+  margin: 5px 0; /* Jarak antar paragraf di footer */
+}
+
+.main-footer a {
+  color: #007bff; /* Warna link biru */
+  text-decoration: none;
+}
+
+.main-footer a:hover {
+  text-decoration: underline;
+}
