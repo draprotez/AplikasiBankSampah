@@ -35,9 +35,9 @@ $sampah_list = getAllSampah($conn);
 
     <div class="container">
 
-        <div class="search-container">
+        <!-- <div class="search-container">
             <input type="text" id="search-kelola" class="search-bar" placeholder="Cari Data Nasabah...">
-        </div>
+        </div> -->
         
         <button onclick="openForm('createForm')" class="btn btn-tambah">Tambah Setoran</button>
 

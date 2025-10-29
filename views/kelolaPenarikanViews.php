@@ -33,9 +33,9 @@ $users = getAllUsers($conn);
 
     <div class="container">
 
-        <div class="search-container">
+        <!-- <div class="search-container">
             <input type="text" id="search-kelola" class="search-bar" placeholder="Cari Data Nasabah...">
-        </div>
+        </div> -->
 
         <button onclick="openForm('createForm')" class="btn btn-tambah">Tambah Penarikan</button>
 
@@ -122,7 +122,7 @@ $users = getAllUsers($conn);
     </div>
 
     <?php include '../includes/footer.php'; ?>
-    
+
     <script>
         // Fungsi untuk membuka popup
         function openForm(modalId) {
