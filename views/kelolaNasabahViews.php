@@ -144,52 +144,12 @@ $users = getAllUsers($conn);
 
     <?php include '../includes/footer.php'; ?>
 
+    <script src="../assets/js/admin-script.js"></script>
+
     <script>
-        // Fungsi untuk membuka popup
-        function openForm(modalId) {
-            document.getElementById(modalId).style.display = 'flex';
-        }
-
-        // Fungsi untuk menutup popup
-        function closeForm(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
-
-        // Fungsi untuk membuka popup edit
-        function openEditForm(buttonElement) {
-        const id = buttonElement.getAttribute('data-id');
-        const nama = buttonElement.getAttribute('data-nama');
-        const username = buttonElement.getAttribute('data-username');
-        const email = buttonElement.getAttribute('data-email');
-        const nohp = buttonElement.getAttribute('data-nohp');
-        const alamat = buttonElement.getAttribute('data-alamat');
-
-        document.getElementById('edit_id_user').value = id; 
-        document.getElementById('edit_nama').value = nama;
-        document.getElementById('edit_username').value = username;
-        document.getElementById('edit_email').value = email;
-        document.getElementById('edit_no_hp').value = nohp;
-        document.getElementById('edit_alamat').value = alamat;
-        document.getElementById('edit_password').value = ''; // Kosongkan password
-            openForm('editForm');
-        }
-
-        // --- FUNGSI BARU UNTUK MEMBUKA POPUP KONFIRMASI DELETE ---
-        function openDeleteConfirm(buttonElement) {
-            const deleteUrl = buttonElement.getAttribute('data-url');
-            document.getElementById('deleteUrlInput').value = deleteUrl;
-            openForm('deleteConfirmModal');
-        }
-
-        // --- FUNGSI BARU UNTUK MENJALANKAN DELETE SETELAH KONFIRMASI ---
-        function confirmDelete() {
-            const deleteUrl = document.getElementById('deleteUrlInput').value;
-            if (deleteUrl) {
-                window.location.href = deleteUrl; // Arahkan ke URL Hapus
-            } else {
-                alert('Error: URL Hapus tidak ditemukan!');
-            }
-        }
+        <?php if (isset($_GET['error_popup'])): ?>
+            openForm('createForm');
+        <?php endif; ?>
     </script>
 </body>
 </html>

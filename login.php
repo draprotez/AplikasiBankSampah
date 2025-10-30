@@ -41,10 +41,10 @@
 
             if (passwordInput.type === "password") {
                 passwordInput.type = "text";
-                toggleIcon.textContent = "👁️‍🗨️"; // ikon bisa disesuaikan
+                toggleIcon.textContent = ""; // ikon bisa disesuaikan
             } else {
                 passwordInput.type = "password";
-                toggleIcon.textContent = "👁️‍🗨️";
+                toggleIcon.textContent = "";
             }
         }
     </script>

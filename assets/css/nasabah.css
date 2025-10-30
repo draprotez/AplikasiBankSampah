@@ -152,8 +152,14 @@ section.active {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ----- 5. SALDO CARD ----- */
@@ -281,23 +287,27 @@ tbody tr:hover {
 }
 
 /* Column alignment */
-td:nth-child(1) { /* Tanggal */
+td:nth-child(1) {
+  /* Tanggal */
   width: 20%;
   text-align: center;
 }
 
-td:nth-child(2) { /* Jenis */
+td:nth-child(2) {
+  /* Jenis */
   width: 30%;
   text-align: left;
   padding-left: 20px;
 }
 
-td:nth-child(3) { /* Berat */
+td:nth-child(3) {
+  /* Berat */
   width: 20%;
   text-align: center;
 }
 
-td:nth-child(4) { /* Nominal */
+td:nth-child(4) {
+  /* Nominal */
   width: 30%;
   text-align: right;
   padding-right: 20px;
@@ -308,58 +318,59 @@ td:nth-child(4) { /* Nominal */
   body {
     padding: 10px;
   }
-  
+
   .judul {
     font-size: 24px;
     margin: 15px 0 20px 0;
   }
-  
+
   .navbar {
     flex-direction: column;
     padding: 10px 0;
   }
-  
+
   .nav-btn {
     padding: 15px 20px;
     font-size: 14px;
     width: 100%;
     text-align: center;
   }
-  
+
   .log-btn {
     margin: 15px 0 0 0;
     width: 90%;
     text-align: center;
   }
-  
+
   .content {
     width: 95%;
   }
-  
+
   .saldo-card {
     padding: 30px 20px;
     margin: 0 auto 20px auto;
   }
-  
+
   .saldo-amount {
     font-size: 28px;
   }
-  
+
   .form {
     padding: 20px;
   }
-  
-  th, td {
+
+  th,
+  td {
     padding: 12px 8px;
     font-size: 14px;
   }
-  
+
   /* Stack table columns on mobile */
   table {
     display: block;
     overflow-x: auto;
   }
-  
+
   td:nth-child(1),
   td:nth-child(2),
   td:nth-child(3),
@@ -374,20 +385,21 @@ td:nth-child(4) { /* Nominal */
   .judul {
     font-size: 22px;
   }
-  
+
   .saldo-card {
     padding: 25px 15px;
   }
-  
+
   .saldo-amount {
     font-size: 24px;
   }
-  
+
   .form {
     padding: 15px;
   }
-  
-  th, td {
+
+  th,
+  td {
     padding: 10px 5px;
     font-size: 13px;
   }

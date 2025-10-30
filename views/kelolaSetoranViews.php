@@ -82,7 +82,7 @@ $sampah_list = getAllSampah($conn);
         <div class="popup-form">
             <h2>Form Tambah Setoran</h2>
             
-            <form action="../controller/createSetoranController.php" method="POST">
+            <form action="../controller/setoranController.php" method="POST">
                 
                 <label for="id_user">Nasabah (User):</label>
                 <select id="id_user" name="id_user" required>

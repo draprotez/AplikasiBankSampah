@@ -62,15 +62,13 @@ if ($query_jenis_sampah && $query_jenis_sampah->num_rows > 0) {
   <header class="navbar">
     <div class="nav-container">
       <div class="logo">
-        <img src="" alt="">
-        Bank Sampah
-        <br>
+        <img src="assets/images/bsmam.png" alt="" style="height: 50px; width: auto;">
         Migunani Asri Madani
       </div>
       <div class="nav-right">
         <ul>
-          <li><a href="#">Beranda</a></li>
-          <li><a href="#">Cara Kerja</a></li>
+          <li><a href="#About" >Beranda</a></li>
+          <li><a href="#Steps">Cara Kerja</a></li>
         </ul>
         <a href="login.php"><button class="login-btn">Login</button></a>
       </div>
@@ -84,19 +82,16 @@ if ($query_jenis_sampah && $query_jenis_sampah->num_rows > 0) {
         <h2>Ubah Sampah Jadi Rupiah, Bantu Lingkungan Tercinta</h2>
         <a href="register.php"><button class="cta-btn">Gabung Sekarang</button></a>
       </div>
-      <img src="assets/images/jus.jpg" alt="Bank Sampah" class="hero-image">
+      <img src="assets/images/logobs1.jpg" alt="Bank Sampah" class="hero-image">
     </div>
   </section>
 
   <!-- Tentang Kami -->
-  <section class="about">
+  <section class="about" id="About">
     <h2>Tentang Kami</h2>
     <p>
-      Bank Sampah Anda adalah inisiatif lingkungan yang mengajak masyarakat untuk menabung sampah
-      dan mendapatkan manfaat ekonomi. Dengan konsep ramah lingkungan, kami membantu masyarakat
-      mendaur ulang sampah menjadi sesuatu yang bernilai.
+      Bank Sampah Migunani Asri Madani adalah sebuah organisasi masyarakat yang aktif dalam pengelolaan limbah dengan melibatkan partisipasi publik. Kami hadir sebagai alternatif praktis untuk mengurangi akumulasi sampah melalui sistem yang mirip dengan perbankan, di mana masyarakat dapat menyimpan limbah yang masih memiliki nilai jual.
     </p>
-
     <div class="visi-misi">
       <div class="visi">
         <h3>Visi</h3>
@@ -116,13 +111,7 @@ if ($query_jenis_sampah && $query_jenis_sampah->num_rows > 0) {
 
     <h2>Struktural Kepengurusan</h2>
     <div class="struktur-text">
-      Penasihat Ketua RW 05 GSA<br>
-      Pembina I Purwono<br>
-      Pembina II Bambang Tri S<br>
-      Ketua Vivi Fitriani S.Sos<br>
-      Sekretaris I Shinta Dewi<br>
-      Sekretaris II Yoko Nita<br>
-      Bendahara Suprapminingsih
+      <img src="assets/images/struktur.png" alt="">
     </div>
 
     <!-- Struktur Carousel -->
@@ -130,36 +119,33 @@ if ($query_jenis_sampah && $query_jenis_sampah->num_rows > 0) {
       <button class="arrow prev">&#10094;</button>
       <div class="struktur-track">
         <div class="struktur-card">
-          <img src="jus.jpg" alt="Struktur 1">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
+          <img src="assets/images/logobs2.jpg" alt="">
+          </div>
         <div class="struktur-card">
-          <img src="jus.jpg" alt="Struktur 2">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
+          <img src="assets/images/logobs5.jpg" alt="">
+          </div>
         <div class="struktur-card">
-          <img src="jus.jpg" alt="Struktur 3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
+          <img src="assets/images/logobs6.jpg" alt="">
+          </div>
       </div>
       <button class="arrow next">&#10095;</button>
     </div>
   </section>
 
   <!-- Cara Kerja -->
-  <section class="steps">
+  <section class="steps" id="Steps">
     <h2>Cara Kerjanya?</h2>
     <div class="step-container">
       <div class="step">
-        <img src="jus.jpg" alt="Step 1">
+        <img src="assets/images/logobs9.png" alt="">
         <p>1. Kumpulkan Sampah</p>
       </div>
       <div class="step">
-        <img src="jus.jpg" alt="Step 2">
+        <img src="assets/images/logobs8.png" alt="">
         <p>2. Timbang di Bank Sampah</p>
       </div>
       <div class="step">
-        <img src="jus.jpg" alt="Step 3">
+        <img src="assets/images/logobs7.png" alt="">
         <p>3. Dapatkan Saldo Rupiah</p>
       </div>
     </div>
