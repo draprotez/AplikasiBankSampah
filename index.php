@@ -8,6 +8,12 @@ $jenis_sampah_list = []; // Siapkan array kosong
 if ($query_jenis_sampah && $query_jenis_sampah->num_rows > 0) {
     $jenis_sampah_list = $query_jenis_sampah->fetch_all(MYSQLI_ASSOC);
 }
+// Mengambil 5 berita terbaru
+$query_berita = $conn->query("SELECT judul, konten, gambar FROM berita ORDER BY tanggal_post DESC LIMIT 5"); 
+$berita_list = []; // Siapkan array kosong
+if ($query_berita && $query_berita->num_rows > 0) {
+    $berita_list = $query_berita->fetch_all(MYSQLI_ASSOC);
+}
 // --- AKHIR BLOK PHP BARU ---
 ?>
 
@@ -118,15 +124,29 @@ if ($query_jenis_sampah && $query_jenis_sampah->num_rows > 0) {
     <div class="struktur-carousel">
       <button class="arrow prev">&#10094;</button>
       <div class="struktur-track">
-        <div class="struktur-card">
-          <img src="assets/images/logobs2.jpg" alt="">
-          </div>
-        <div class="struktur-card">
-          <img src="assets/images/logobs5.jpg" alt="">
-          </div>
-        <div class="struktur-card">
-          <img src="assets/images/logobs6.jpg" alt="">
-          </div>
+        
+        <?php if (empty($berita_list)): ?>
+            <div class="struktur-card">
+              <p style="text-align:center; padding: 20px;">Belum ada berita atau kegiatan.</p>
+            </div>
+        <?php else: ?>
+            <?php foreach ($berita_list as $berita): ?>
+              <div class="struktur-card">
+                <img src="assets/images/berita/<?php echo htmlspecialchars($berita['gambar']); ?>" alt="<?php echo htmlspecialchars($berita['judul']); ?>">
+                <p>
+                    <strong><?php echo htmlspecialchars($berita['judul']); ?></strong><br>
+                    <?php 
+                        $konten_singkat = htmlspecialchars($berita['konten']);
+                        if (strlen($konten_singkat) > 100) {
+                            $konten_singkat = substr($konten_singkat, 0, 100) . '...';
+                        }
+                        echo $konten_singkat;
+                    ?>
+                </p>
+              </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+
       </div>
       <button class="arrow next">&#10095;</button>
     </div>

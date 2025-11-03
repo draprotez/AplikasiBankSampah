@@ -16,6 +16,7 @@
             <a href="kelolaSetoranViews.php">Konfirmasi Setoran</a>
             <a href="kelolaPenarikanViews.php">Konfirmasi Penarikan</a>
             <a href="kelolaSampahViews.php">Kelola Harga</a>
+            <a href="kelolaBeritaViews.php">Kelola Berita</a>
         </nav>
     </header>
 </body>
