@@ -1,20 +1,20 @@
 <?php
-// --- TAMBAHKAN BLOK PHP INI DI PALING ATAS ---
-include 'config/database.php'; // Sesuaikan path ke file koneksi database Anda
+include 'config/database.php';
 
-// Ambil data dari tabel jenis_sampah
+// Table Jenis Sampah
 $query_jenis_sampah = $conn->query("SELECT nama_jenis, harga_per_kg FROM jenis_sampah ORDER BY nama_jenis ASC");
 $jenis_sampah_list = []; // Siapkan array kosong
 if ($query_jenis_sampah && $query_jenis_sampah->num_rows > 0) {
     $jenis_sampah_list = $query_jenis_sampah->fetch_all(MYSQLI_ASSOC);
 }
-// Mengambil 5 berita terbaru
+// Berita
 $query_berita = $conn->query("SELECT judul, konten, gambar FROM berita ORDER BY tanggal_post DESC LIMIT 5"); 
-$berita_list = []; // Siapkan array kosong
+$berita_list = [];
 if ($query_berita && $query_berita->num_rows > 0) {
     $berita_list = $query_berita->fetch_all(MYSQLI_ASSOC);
 }
-// --- AKHIR BLOK PHP BARU ---
+// Footer
+$tahunSekarang = date("Y"); 
 ?>
 
 <!DOCTYPE html>
@@ -23,63 +23,43 @@ if ($query_berita && $query_berita->num_rows > 0) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bank Sampah Anda</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="website icon" type="png" href="assets/images/bsmam.png" />
+  <link rel="stylesheet" href="assets/css/style-index.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
   <style>
-    .pagination-controls {
-          text-align: center;
-          margin-top: 20px;
-          display: flex; /* Agar tombol dan info sejajar */
-          justify-content: center;
-          align-items: center;
-          gap: 10px; /* Jarak antar elemen */
-      }
-      .pagination-controls button {
-          background-color: #2ecc71;
-          color: white;
-          border: none;
-          padding: 8px 15px;
-          border-radius: 5px;
-          cursor: pointer;
-          font-family: 'Poppins', sans-serif;
-          transition: background-color 0.2s ease;
-      }
-      .pagination-controls button:hover:not(:disabled) { /* Efek hover hanya jika tidak disabled */
-          background-color: #27ae60;
-      }
-      .pagination-controls button:disabled {
-          background-color: #cccccc;
-          cursor: not-allowed;
-          opacity: 0.6;
-      }
-      .page-info {
-          font-size: 14px;
-          font-weight: 500;
-          color: #555;
-      }
-      /* Sembunyikan baris yang tidak aktif */
-      tbody#jenisSampahTableBody tr.hidden-row {
-         display: none;
-      }
+    
   </style>
 </head>
 <body>
   <!-- Navbar -->
   <header class="navbar">
     <div class="nav-container">
-      <div class="logo">
-        <img src="assets/images/bsmam.png" alt="" style="height: 50px; width: auto;">
-        Migunani Asri Madani
-      </div>
-      <div class="nav-right">
-        <ul>
-          <li><a href="#About" >Beranda</a></li>
-          <li><a href="#Steps">Cara Kerja</a></li>
-        </ul>
-        <a href="login.php"><button class="login-btn">Login</button></a>
-      </div>
+        <div class="logo">
+            <img src="assets/images/bsmam.png" alt="" style="height: 50px; width: auto;">
+            Migunani Asri Madani
+        </div>
+        <button id="hamburger-menu">
+            <i data-feather="menu"></i>
+        </button>
+        <div class="menu-overlay"></div>
+        <div class="nav-right"> <!-- PERBAIKI: HAPUS EXTRA 'd' -->
+            <ul>
+                <li><a href="#About">Beranda</a></li>
+                <li><a href="#Steps">Cara Kerja</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-toggle">Kontak</a>
+                    <div class="dropdown-menu">
+                        <a href="https://www.youtube.com/@banksampahmigunaniasrimada9587?si=VRvTW7M_A-BuiT3E" target="_blank">YouTube BS MAM</a>
+                        <a href="https://www.youtube.com/channel/UCfl4CWSqsyHxavGZdjO_6wA" target="_blank">YouTube RW.05</a>
+                        <a href="https://www.instagram.com/bsmam05?igsh=bG8xYnQ0NXA0anpl" target="_blank">Instagram</a>
+                    </div>
+                </li>
+            </ul>
+            <a href="login.php"><button class="login-btn">Login</button></a>
+        </div>
     </div>
-  </header>
+</header>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -204,89 +184,266 @@ if ($query_berita && $query_berita->num_rows > 0) {
     </section>
 
   <!-- Footer -->
-  <?php include 'includes/footer.php'; ?>
+  <footer class="main-footer">
+  <div class="footer-content">
+    <p>&copy; <?php echo $tahunSekarang; ?> <a href="https://github.com/draprotez">draprotez</a>. All Rights Reserved.</p>
+    </div>
+  </footer>
 
   <script>
+    // Inisialisasi Feather Icons
+    feather.replace();
+
+    // Deklarasi variabel global
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const navRight = document.querySelector('.nav-right');
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const navDropdown = document.querySelector('.nav-dropdown');
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+
+    // ===== FIX: FUNGSI UNTUK MENUTUP SEMUA MENU =====
+    function closeAllMenus() {
+        if (navRight) navRight.classList.remove('active');
+        if (menuOverlay) menuOverlay.classList.remove('active');
+        if (navDropdown) navDropdown.classList.remove('active');
+        
+        // Kembalikan icon ke menu
+        if (hamburgerMenu) {
+            const icon = hamburgerMenu.querySelector('i');
+            if (icon) {
+                icon.setAttribute('data-feather', 'menu');
+                feather.replace();
+            }
+        }
+    }
+
+    // ===== HAMBURGER MENU =====
+    if (hamburgerMenu && navRight && menuOverlay) {
+        hamburgerMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isActive = navRight.classList.contains('active');
+            
+            // Tutup semua menu dulu
+            closeAllMenus();
+            
+            // Jika sebelumnya tidak aktif, buka menu utama
+            if (!isActive) {
+                navRight.classList.add('active');
+                menuOverlay.classList.add('active');
+                
+                // Ganti icon ke close
+                const icon = this.querySelector('i');
+                if (icon) {
+                    icon.setAttribute('data-feather', 'x');
+                    feather.replace();
+                }
+            }
+        });
+    }
+
+    // ===== DROPDOWN KONTAK - FIXED VERSION =====
+    if (dropdownToggle && navDropdown) {
+        dropdownToggle.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Tutup dropdown lain jika ada yang terbuka
+                document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+                    if (dropdown !== navDropdown) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+                
+                // Toggle dropdown yang diklik
+                navDropdown.classList.toggle('active');
+                
+                // Pastikan menu utama tetap terbuka di mobile
+                if (navRight) navRight.classList.add('active');
+                if (menuOverlay) menuOverlay.classList.add('active');
+            }
+        });
+
+        // Untuk desktop - hover functionality
+        if (window.innerWidth > 768) {
+            navDropdown.addEventListener('mouseenter', function() {
+                const dropdownMenu = this.querySelector('.dropdown-menu');
+                if (dropdownMenu) dropdownMenu.style.display = 'block';
+            });
+            
+            navDropdown.addEventListener('mouseleave', function() {
+                const dropdownMenu = this.querySelector('.dropdown-menu');
+                if (dropdownMenu) dropdownMenu.style.display = 'none';
+            });
+        }
+    }
+
+    // ===== OVERLAY UNTUK MENUTUP MENU =====
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', function() {
+            closeAllMenus();
+        });
+    }
+
+    // ===== TUTUP MENU SAAT KLIK DI LUAR - FIXED =====
+    document.addEventListener('click', function(e) {
+        // Jika klik di luar navbar dan bukan hamburger menu
+        if (!e.target.closest('.navbar') && !e.target.closest('#hamburger-menu')) {
+            closeAllMenus();
+        }
+        
+        // Jika klik di luar dropdown kontak di desktop
+        if (window.innerWidth > 768 && navDropdown) {
+            if (!e.target.closest('.nav-dropdown')) {
+                const dropdownMenu = navDropdown.querySelector('.dropdown-menu');
+                if (dropdownMenu) dropdownMenu.style.display = 'none';
+            }
+        }
+        
+        // Jika klik di luar dropdown kontak di mobile
+        if (window.innerWidth <= 768 && navDropdown) {
+            if (!e.target.closest('.nav-dropdown')) {
+                navDropdown.classList.remove('active');
+            }
+        }
+    });
+
+    // ===== RESIZE HANDLER - FIXED =====
+    window.addEventListener('resize', function() {
+        // Reset semua menu saat resize ke desktop
+        if (window.innerWidth > 768) {
+            closeAllMenus();
+            
+            // Reset dropdown display untuk desktop
+            if (navDropdown) {
+                const dropdownMenu = navDropdown.querySelector('.dropdown-menu');
+                if (dropdownMenu) dropdownMenu.style.display = 'none';
+            }
+        }
+    });
+
+    // ===== SMOOTH SCROLL =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href !== '#' && href !== '') {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    // Hitung offset untuk navbar fixed
+                    const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Tutup menu mobile setelah klik link
+                    if (window.innerWidth <= 768) {
+                        closeAllMenus();
+                    }
+                }
+            }
+        });
+    });
+
+    // ===== CAROUSEL FUNCTIONALITY =====
     const prev = document.querySelector('.prev');
     const next = document.querySelector('.next');
     const track = document.querySelector('.struktur-track');
-    let position = 0;
+    
+    if (prev && next && track) {
+        let position = 0;
+        const cardWidth = 320;
+        const totalCards = track.children.length;
+        const maxPosition = -((totalCards - 1) * cardWidth);
 
-    next.addEventListener('click', () => {
-      position -= 320;
-      if (position < -640) position = 0;
-      track.style.transform = `translateX(${position}px)`;
-    });
+        next.addEventListener('click', () => {
+            position -= cardWidth;
+            if (position < maxPosition) position = 0;
+            track.style.transform = `translateX(${position}px)`;
+        });
 
-    prev.addEventListener('click', () => {
-      position += 320;
-      if (position > 0) position = -640;
-      track.style.transform = `translateX(${position}px)`;
-    });
+        prev.addEventListener('click', () => {
+            position += cardWidth;
+            if (position > 0) position = maxPosition;
+            track.style.transform = `translateX(${position}px)`;
+        });
+    }
 
+    // ===== PAGINATION FUNCTIONALITY =====
     const tableBody = document.getElementById('jenisSampahTableBody');
-    const rows = tableBody.getElementsByTagName('tr');
-    const prevButton = document.getElementById('prevButton');
-    const nextButton = document.getElementById('nextButton');
-    const pageInfo = document.getElementById('pageInfo');
+    const paginationControls = document.getElementById('paginationControls');
+    
+    if (tableBody && paginationControls) {
+        const rows = tableBody.getElementsByTagName('tr');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const pageInfo = document.getElementById('pageInfo');
 
-    const itemsPerPage = 10; // Tampilkan 10 item per halaman
-    const totalItems = rows.length;
-    const totalPages = Math.ceil(totalItems / itemsPerPage);
-    let currentPage = 1;
+        if (prevButton && nextButton && pageInfo) {
+            const itemsPerPage = 10;
+            const totalItems = rows.length;
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            let currentPage = 1;
 
-    // --- Fungsi untuk menampilkan halaman tertentu ---
-    function displayPage(page) {
-        currentPage = page;
-        const startIndex = (page - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
+            function displayPage(page) {
+                currentPage = page;
+                const startIndex = (page - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
 
-        // Sembunyikan/Tampilkan baris sesuai halaman
-        for (let i = 0; i < totalItems; i++) {
-            if (i >= startIndex && i < endIndex) {
-                rows[i].classList.remove('hidden-row');
-                rows[i].style.display = ""; // Pastikan tampil
+                for (let i = 0; i < totalItems; i++) {
+                    if (i >= startIndex && i < endIndex) {
+                        rows[i].classList.remove('hidden-row');
+                        rows[i].style.display = "";
+                    } else {
+                        rows[i].classList.add('hidden-row');
+                        rows[i].style.display = "none";
+                    }
+                }
+                updatePaginationControls();
+            }
+
+            function updatePaginationControls() {
+                pageInfo.textContent = `Halaman ${currentPage} dari ${totalPages}`;
+                prevButton.disabled = currentPage === 1;
+                nextButton.disabled = currentPage === totalPages;
+            }
+
+            prevButton.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    displayPage(currentPage - 1);
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    displayPage(currentPage + 1);
+                }
+            });
+
+            if (totalItems > 0 && totalPages > 0) {
+                displayPage(1);
             } else {
-                rows[i].classList.add('hidden-row');
-                rows[i].style.display = "none"; // Sembunyikan
+                paginationControls.style.display = 'none';
             }
         }
-        updatePaginationControls(); // Perbarui tombol dan info halaman
     }
 
-    // --- Fungsi untuk update status tombol & info halaman ---
-    function updatePaginationControls() {
-        // Update teks info halaman
-        pageInfo.textContent = `Halaman ${currentPage} dari ${totalPages}`;
-
-        // Aktifkan/Nonaktifkan tombol Previous
-        prevButton.disabled = currentPage === 1;
-
-        // Aktifkan/Nonaktifkan tombol Next
-        nextButton.disabled = currentPage === totalPages;
-    }
-
-    // --- Event listener untuk tombol ---
-    prevButton.addEventListener('click', () => {
-        if (currentPage > 1) {
-            displayPage(currentPage - 1);
-        }
+    // ===== FIX: EVENT LISTENER UNTUK LINK DROPDOWN =====
+    document.querySelectorAll('.dropdown-menu a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Biarkan link berfungsi normal
+            if (window.innerWidth <= 768) {
+                // Tutup menu mobile setelah klik link dropdown
+                setTimeout(() => {
+                    closeAllMenus();
+                }, 300);
+            }
+        });
     });
-
-    nextButton.addEventListener('click', () => {
-        if (currentPage < totalPages) {
-            displayPage(currentPage + 1);
-        }
-    });
-
-    // --- Inisialisasi saat halaman dimuat ---
-    if (totalItems > 0 && totalPages > 0) { // Hanya jalankan jika ada data & halaman
-         displayPage(1); // Tampilkan halaman pertama
-    } else {
-         // Sembunyikan kontrol jika tidak ada data atau hanya 1 halaman
-         document.getElementById('paginationControls').style.display = 'none';
-    }
-  </script>
+</script>
 
 </body>
 </html>

@@ -1,20 +1,12 @@
 <?php
-/**
- * MODEL UNTUK MANAJEMEN JENIS SAMPAH
- */
-
-/**
- * Mengambil semua jenis sampah
- */
+// Fungsi untuk mengambil semua jenis sampah
 function getAllSampah($conn) {
     $sql = "SELECT * FROM jenis_sampah ORDER BY nama_jenis ASC";
     $result = $conn->query($sql);
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
-/**
- * Mengambil satu jenis sampah berdasarkan ID
- */
+// Fungsi untuk mengambil jenis sampah berdasarkan ID
 function getSampahById($conn, $id) {
     $sql = "SELECT * FROM jenis_sampah WHERE id_jenis = ?";
     $stmt = $conn->prepare($sql);
@@ -24,9 +16,7 @@ function getSampahById($conn, $id) {
     return $result->fetch_assoc();
 }
 
-/**
- * FUNGSI BARU - Memasukkan jenis sampah baru
- */
+// Fungsi untuk menambahkan jenis sampah baru
 function insertSampah($conn, $data) {
     $sql = "INSERT INTO jenis_sampah (nama_jenis, kategori, harga_per_kg) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
@@ -38,9 +28,7 @@ function insertSampah($conn, $data) {
     return $stmt->execute();
 }
 
-/**
- * FUNGSI BARU - Mengupdate jenis sampah
- */
+// Fungsi untuk mengupdate jenis sampah
 function updateSampah($conn, $data) {
     $sql = "UPDATE jenis_sampah SET nama_jenis = ?, kategori = ?, harga_per_kg = ? 
             WHERE id_jenis = ?";
@@ -54,9 +42,7 @@ function updateSampah($conn, $data) {
     return $stmt->execute();
 }
 
-/**
- * FUNGSI BARU - Menghapus jenis sampah
- */
+// Fungsi untuk menghapus jenis sampah
 function deleteSampah($conn, $id) {
     $sql = "DELETE FROM jenis_sampah WHERE id_jenis = ?";
     $stmt = $conn->prepare($sql);

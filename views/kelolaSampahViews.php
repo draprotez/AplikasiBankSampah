@@ -5,7 +5,6 @@ if (!isset($_SESSION['is_logged_in'])) { header("Location: ../login.php"); exit(
 include '../config/database.php';
 include '../models/sampahModels.php';
 
-// Mengambil semua data sampah
 $sampah_list = getAllSampah($conn);
 ?>
 <!DOCTYPE html>
@@ -22,10 +21,6 @@ $sampah_list = getAllSampah($conn);
     <?php include '../includes/header.php'; ?>
 
     <div class="container">
-
-        <!-- <div class="search-container">
-            <input type="text" id="search-kelola" class="search-bar" placeholder="Cari Jenis Sampah...">
-        </div> -->
 
         <button onclick="openForm('createForm')" class="btn btn-tambah">Tambah Jenis Sampah</button>
 
@@ -154,19 +149,18 @@ $sampah_list = getAllSampah($conn);
     <?php include '../includes/footer.php'; ?>
 
     <script>
-        // Fungsi untuk membuka popup (bisa untuk create, edit, atau delete)
+        // Fungsi untuk membuka popup
         function openForm(modalId) {
             document.getElementById(modalId).style.display = 'flex';
         }
 
-        // Fungsi untuk menutup popup (bisa untuk create, edit, atau delete)
+        // Fungsi untuk menutup popup
         function closeForm(modalId) {
             document.getElementById(modalId).style.display = 'none';
         }
 
-        // --- FUNGSI BARU UNTUK MEMBUKA POPUP EDIT ---
+        // --- FUNGSI UNTUK MEMBUKA POPUP EDIT
         function openEditSampahForm(buttonElement) {
-            // Ambil data dari atribut data-* tombol yang diklik
             const id = buttonElement.getAttribute('data-id');
             const nama = buttonElement.getAttribute('data-nama');
             const kategori = buttonElement.getAttribute('data-kategori');
@@ -178,7 +172,6 @@ $sampah_list = getAllSampah($conn);
             document.getElementById('edit_kategori').value = kategori;
             document.getElementById('edit_harga_per_kg').value = harga;
            
-            // Tampilkan popup edit
             openForm('editForm');
         }
 
@@ -192,7 +185,7 @@ $sampah_list = getAllSampah($conn);
         function confirmDelete() {
             const deleteUrl = document.getElementById('deleteUrlInput').value;
             if (deleteUrl) {
-                window.location.href = deleteUrl; // Arahkan ke URL Hapus
+                window.location.href = deleteUrl;
             } else {
                 alert('Error: URL Hapus tidak ditemukan!');
             }

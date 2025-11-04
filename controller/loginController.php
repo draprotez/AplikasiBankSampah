@@ -6,7 +6,6 @@ include '../config/database.php';
 $login_input = $_POST['username']; // Bisa username atau email
 $password = $_POST['password'];
 
-// Coba login sebagai admin dulu
 $sql_admin = "SELECT * FROM admin WHERE username = ?";
 $stmt = $conn->prepare($sql_admin);
 $stmt->bind_param("s", $login_input);
@@ -30,8 +29,7 @@ if ($result_admin->num_rows > 0) {
     }
 }
 
-// Jika bukan admin, coba login sebagai user (cek username atau email)
-// Bagian ini sudah benar
+// Jika bukan admin, coba login sebagai user
 $sql_users = "SELECT * FROM users WHERE username = ? OR email = ?";
 $stmt = $conn->prepare($sql_users);
 $stmt->bind_param("ss", $login_input, $login_input);
@@ -54,7 +52,6 @@ if ($result_user->num_rows > 0) {
     }
 }
 
-// Jika tidak cocok keduanya
 header("Location: ../login.php?error=Username atau password salah!");
 exit();
 ?>

@@ -31,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit();
     }
 
-    // Enkripsi password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Isi kolom nama dengan username agar tetap sesuai struktur DB

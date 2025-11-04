@@ -1,6 +1,6 @@
 <?php
 require_once("../config/database.php");
-
+// Fungsi untuk mendapatkan riwayat transaksi pengguna
 function getRiwayatTransaksi($id_user) {
     global $conn;
     $sql = "

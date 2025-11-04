@@ -8,13 +8,13 @@ if (!isset($_SESSION['is_logged_in'])) { die("ERROR: Akses tidak sah!"); }
 
 if (isset($_POST['tambah_setoran'])) {
     
-    // 1. Ambil data dari form
+    // Ambil data dari form
     $id_user = $_POST['id_user'];
     $id_jenis = $_POST['id_jenis'];
     $berat_kg = (float)$_POST['berat_kg'];
     $tanggal_setor = $_POST['tanggal_setor'];
 
-    // 2. Ambil harga per kg dari model sampah
+    // Ambil harga per kg dari model sampah
     $sampah = getSampahById($conn, $id_jenis);
     if (!$sampah) {
         header("Location: ../views/kelolaSetoranViews.php?error=Jenis sampah tidak valid!");
@@ -22,10 +22,10 @@ if (isset($_POST['tambah_setoran'])) {
     }
     $harga_per_kg = (float)$sampah['harga_per_kg'];
 
-    // 3. LOGIKA INTI: Hitung total harga
+    // LOGIKA INTI: Hitung total harga
     $total_harga = $berat_kg * $harga_per_kg;
 
-    // 4. Siapkan data untuk model setoran
+    // Siapkan data untuk model setoran
     $data = [
         'id_user' => $id_user,
         'id_jenis' => $id_jenis,
@@ -34,7 +34,7 @@ if (isset($_POST['tambah_setoran'])) {
         'tanggal_setor' => $tanggal_setor
     ];
 
-    // 5. Panggil model untuk insert
+    // Panggil model untuk insert
     $result = insertSetoran($conn, $data);
 
     if ($result) {

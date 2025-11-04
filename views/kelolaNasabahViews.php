@@ -1,19 +1,14 @@
 <?php
 session_start();
-// Cek jika admin belum login
 if (!isset($_SESSION['is_logged_in']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../login.php?error=Akses ditolak!");
     exit();
 }
 
-// Memanggil koneksi dan model
 include '../config/database.php';
-// Ganti nama model ini jika file Anda namanya userModel.php
 include '../models/kelolaNasabahModels.php'; 
-// PENTING: Panggil model saldo
 include '../models/saldoModels.php'; 
 
-// Mengambil semua data user
 $users = getAllUsers($conn);
 ?>
 <!DOCTYPE html>
@@ -29,15 +24,10 @@ $users = getAllUsers($conn);
     <?php include '../includes/header.php'; ?>
 
     <div class="container">
-        
-        <!-- <div class="search-container">
-            <input type="text" id="search-kelola" class="search-bar" placeholder="Cari Data Nasabah...">
-        </div> -->
 
         <button onclick="openForm('createForm')" class="btn btn-tambah">Tambah Nasabah</button>
 
         <?php
-        // Notifikasi
         if (isset($_GET['success'])) { echo '<div class="alert alert-success">' . htmlspecialchars($_GET['success']) . '</div>'; }
         if (isset($_GET['error'])) { echo '<div class="alert alert-error">' . htmlspecialchars($_GET['error']) . '</div>'; }
         ?>

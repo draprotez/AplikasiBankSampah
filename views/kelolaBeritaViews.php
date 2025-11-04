@@ -1,6 +1,5 @@
 <?php
 session_start();
-// Cek jika admin belum login
 if (!isset($_SESSION['is_logged_in']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../login.php?error=Akses ditolak!");
     exit();
@@ -155,7 +154,7 @@ $berita_list = getAllBerita($conn);
     <?php include '../includes/footer.php'; ?>
     <script src="../assets/js/admin-script.js"></script>
     <script>
-        // --- FUNGSI BARU UNTUK MEMBUKA POPUP EDIT BERITA ---
+        // UNTUK MEMBUKA POPUP EDIT BERITA ---
         function openEditBeritaForm(buttonElement) {
             const id = buttonElement.getAttribute('data-id');
             const judul = buttonElement.getAttribute('data-judul');
@@ -167,17 +166,14 @@ $berita_list = getAllBerita($conn);
             document.getElementById('edit_judul').value = judul;
             document.getElementById('edit_konten').value = konten;
             document.getElementById('edit_gambar_lama').value = gambar;
-            
-            // Atur preview gambar
+
             const imgPreview = document.getElementById('edit_img_preview');
-            // Pastikan path ke folder upload benar
             imgPreview.src = '../assets/images/berita/' + gambar;
-           
-            // Tampilkan popup edit
+
             openForm('editForm');
         }
 
-        // Cek jika ada error popup dari URL, langsung tampilkan modal
+        // Cek jika ada error popup dari URL
         <?php if (isset($_GET['error_popup'])): ?>
             openForm('createForm');
         <?php endif; ?>

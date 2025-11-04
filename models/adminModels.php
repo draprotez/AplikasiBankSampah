@@ -20,7 +20,7 @@ function insertAdmin($conn, $data) {
         if ($stmt->execute()) {
             return true;
         } else {
-            // Cek jika error karena duplikat username (error code 1062)
+            // Cek jika error karena duplikat username
             if ($conn->errno == 1062) { 
                 return "Username '" . htmlspecialchars($data['username']) . "' sudah terdaftar.";
             } else {

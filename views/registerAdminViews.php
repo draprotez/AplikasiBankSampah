@@ -19,7 +19,6 @@
         <h2>Registrasi Admin</h2>
 
         <?php
-        // Menampilkan pesan error jika ada
         if (isset($_GET['error'])) {
             echo '<p class="error">' . htmlspecialchars($_GET['error']) . '</p>';
         }

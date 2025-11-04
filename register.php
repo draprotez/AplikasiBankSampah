@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Registrasi</title>
     <link rel="stylesheet" href="assets/css/register.css">
+    <link rel="website icon" type="png" href="assets/images/bsmam.png" />
 </head>
 <body>
     <div class="container">
@@ -40,9 +41,9 @@
 
                 <button type="submit" class="btn-register">Daftar</button>
             </form>
-            <p>
+            <!-- <p>
                 <a href="views/registerAdminViews.php">admin</a>
-            </p>
+            </p> -->
             <p class="login-text">
                 Sudah punya akun? <a href="login.php">Login</a>
             </p>

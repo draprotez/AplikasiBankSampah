@@ -56,6 +56,7 @@ body {
   border: 1px solid var(--border-color);
 }
 
+/* ----- 4. BUTTON STYLES ----- */
 .btn {
   padding: 8px 20px;
   text-decoration: none;
@@ -135,7 +136,7 @@ body {
   transform: scale(1.05);
 }
 
-/* ----- 4. CONTENT SECTIONS ----- */
+/* ----- 5. CONTENT SECTIONS ----- */
 .content {
   width: 90%;
   max-width: 1200px;
@@ -162,7 +163,7 @@ section.active {
   }
 }
 
-/* ----- 5. SALDO CARD ----- */
+/* ----- 6. SALDO CARD ----- */
 .saldo-card {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -186,7 +187,7 @@ section.active {
   margin: 0;
 }
 
-/* ----- 6. FORM STYLES ----- */
+/* ----- 7. FORM STYLES ----- */
 .form {
   background-color: #ffffff;
   padding: 30px;
@@ -227,7 +228,7 @@ section.active {
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
-/* ----- 7. BUTTON STYLES ----- */
+/* ----- 8. BUTTON STYLES (FORM) ----- */
 .btn-green {
   background-color: var(--success-color);
   color: white;
@@ -247,7 +248,7 @@ section.active {
   transform: scale(1.02);
 }
 
-/* ----- 8. TABLE STYLES ----- */
+/* ----- 9. TABLE STYLES ----- */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -313,7 +314,16 @@ td:nth-child(4) {
   padding-right: 20px;
 }
 
-/* ----- 9. RESPONSIVE DESIGN ----- */
+/* ----- 10. HAMBURGER MENU STYLES ----- */
+#hamburger-menu-nasabah {
+  display: none;
+  color: #333;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  font-size: 1.8rem;
+}
+
+/* ----- 11. RESPONSIVE DESIGN ----- */
 @media (max-width: 768px) {
   body {
     padding: 10px;
@@ -322,6 +332,7 @@ td:nth-child(4) {
   .judul {
     font-size: 24px;
     margin: 15px 0 20px 0;
+    padding-right: 50px; /* Memberi ruang untuk tombol hamburger */
   }
 
   .navbar {
@@ -379,6 +390,52 @@ td:nth-child(4) {
     text-align: left;
     padding: 10px;
   }
+
+  /* Hamburger menu styles for mobile */
+  .header-nav {
+    padding: 0 2%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #hamburger-menu-nasabah {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+  }
+
+  .header-nav nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #ffffff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  .header-nav nav.active {
+    display: flex;
+  }
+
+  .header-nav nav a {
+    padding: 15px 20px;
+    font-size: 14px;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid #eaeaea;
+    border-left: 3px solid transparent;
+  }
+
+  .header-nav nav a:hover {
+    border-left: 3px solid #28a745;
+    background-color: rgba(40, 167, 69, 0.05);
+  }
 }
 
 @media (max-width: 480px) {
@@ -401,6 +458,11 @@ td:nth-child(4) {
   th,
   td {
     padding: 10px 5px;
+    font-size: 13px;
+  }
+
+  .header-nav nav a {
+    padding: 12px 15px;
     font-size: 13px;
   }
 }

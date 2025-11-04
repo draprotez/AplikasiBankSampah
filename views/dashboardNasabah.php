@@ -21,9 +21,9 @@ $total_tarik = $q2->fetch_assoc()['total_tarik'] ?? 0;
 // Hitung saldo akhir
 $saldo = $total_setor - $total_tarik;
 
-$transaksi = []; // Array kosong untuk menampung semua transaksi
+$transaksi = [];
 
-// 1. Ambil riwayat transaksi setoran
+// Ambil riwayat transaksi setoran
 $q_setoran = $conn->query("
   SELECT s.tanggal_setor AS tanggal, j.nama_jenis, s.berat_kg, s.total_harga AS nominal, 'Setoran' AS tipe
   FROM setoran s
@@ -36,7 +36,7 @@ if ($q_setoran->num_rows > 0) {
     }
 }
 
-// 2. Ambil riwayat transaksi penarikan
+// Ambil riwayat transaksi penarikan
 $q_penarikan = $conn->query("
   SELECT tanggal_penarikan AS tanggal, metode AS nama_jenis, NULL AS berat_kg, jumlah AS nominal, 'Penarikan' AS tipe
   FROM penarikan
@@ -44,11 +44,11 @@ $q_penarikan = $conn->query("
 ");
 if ($q_penarikan->num_rows > 0) {
      while ($row = $q_penarikan->fetch_assoc()) {
-        $transaksi[] = $row; // Tambahkan ke array transaksi
+        $transaksi[] = $row;
     }
 }
 
-// 3. Urutkan semua transaksi berdasarkan tanggal (terbaru dulu)
+// Urutkan semua transaksi berdasarkan tanggal (terbaru dulu)
 usort($transaksi, function($a, $b) {
     return strtotime($b['tanggal']) - strtotime($a['tanggal']);
 });
@@ -104,7 +104,6 @@ usort($transaksi, function($a, $b) {
                   </td>
                   <td>
                       <?php 
-                      // Tampilkan detail berbeda untuk setoran dan penarikan
                       if ($trx['tipe'] == 'Setoran') {
                           echo htmlspecialchars($trx['nama_jenis']) . ' (' . htmlspecialchars($trx['berat_kg']) . ' Kg)';
                       } else {
@@ -114,7 +113,6 @@ usort($transaksi, function($a, $b) {
                   </td>
                   <td style="text-align: right;">
                       <?php 
-                      // Tampilkan nominal positif untuk setoran, negatif untuk penarikan
                       if ($trx['tipe'] == 'Setoran') {
                           echo '+ ' . number_format($trx['nominal'], 0, ',', '.');
                       } else {
@@ -163,39 +161,29 @@ usort($transaksi, function($a, $b) {
         const sectionToShow = document.getElementById(id);
         if (sectionToShow) {
             sectionToShow.classList.add("active");
-            // console.log("Showing section:", id); // Untuk debugging
         } else {
-            // console.error("Section not found:", id); // Untuk debugging
         }
         
-        // Aktifkan tombol yang sesuai (menggunakan ID tombol btn-...)
+        // Aktifkan tombol
         const buttonToActivate = document.getElementById('btn-' + id); 
         if (buttonToActivate) {
             buttonToActivate.classList.add("active");
-            // console.log("Activating button:", 'btn-' + id); // Untuk debugging
         } else {
-             // console.warn("Button not found for section:", id); // Untuk debugging
         }
     }
 
-    // Kode ini akan berjalan HANYA SEKALI saat halaman selesai dimuat
+    // Kode ini akan berjalan HANYA SEKALI
     window.addEventListener('DOMContentLoaded', (event) => {
-        // console.log("DOM Loaded. Checking URL parameter..."); // Untuk debugging
         
         const urlParams = new URLSearchParams(window.location.search);
         const sectionParam = urlParams.get('section');
-        
-        // console.log("URL section parameter:", sectionParam); // Untuk debugging
 
         // Tentukan section mana yang harus ditampilkan pertama kali
-        let initialSection = 'dashboard'; // Defaultnya dashboard
-        if (sectionParam === 'riwayat') { // Jika URL bilang ?section=riwayat
+        let initialSection = 'dashboard';
+        if (sectionParam === 'riwayat') {
             initialSection = 'riwayat';
         } 
-        // Anda bisa tambahkan 'else if' lain jika ada section lain yang bisa di-link
-
-        // console.log("Initial section to show:", initialSection); // Untuk debugging
-        showSection(initialSection); // Panggil fungsi untuk menampilkannya
+        showSection(initialSection);
     });
 </script>
 </body>

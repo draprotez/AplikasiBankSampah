@@ -8,19 +8,26 @@
 
 body {
     background-color: #ffffff;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
 .container {
     width: 100%;
     max-width: 480px;
+    margin: 0 auto;
 }
 
 .register-card {
     text-align: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 100%;
 }
 
 /* Judul */
@@ -39,10 +46,10 @@ body {
 
 .input-group input {
     width: 100%;
-    padding: 10px 40px 10px 12px; /* spasi kanan lebih besar */
+    padding: 12px 45px 12px 15px; /* spasi kanan lebih besar */
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 16px;
     outline: none;
     transition: 0.2s;
 }
@@ -56,13 +63,14 @@ body {
     width: 100%;
     background-color: #00b300;
     color: white;
-    padding: 10px;
+    padding: 12px;
     border: none;
     border-radius: 6px;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
+    min-height: 44px; /* Untuk touch yang lebih baik */
 }
 
 .btn-register:hover {
@@ -75,12 +83,13 @@ body {
     font-size: 13px;
     margin-top: 5px;
     margin-bottom: 10px;
+    text-align: left;
 }
 
 /* Link ke login */
 .login-text {
     margin-top: 15px;
-    font-size: 13px;
+    font-size: 14px;
     color: #555;
 }
 
@@ -97,15 +106,254 @@ body {
 /* Ikon mata (toggle password) */
 .toggle-password {
     position: absolute;
-    right: 12px;
+    right: 15px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     color: #777;
     user-select: none;
+    padding: 5px; /* Area klik lebih besar */
 }
 
 .toggle-password:hover {
     color: #000;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .container {
+        max-width: 420px;
+    }
+    
+    .register-card {
+        padding: 25px;
+    }
+    
+    .register-card h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    
+    .input-group input {
+        padding: 11px 42px 11px 14px;
+        font-size: 15px;
+    }
+    
+    .btn-register {
+        padding: 11px;
+        font-size: 15px;
+    }
+    
+    .toggle-password {
+        right: 12px;
+        font-size: 16px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+        align-items: flex-start;
+        padding-top: 40px;
+    }
+    
+    .container {
+        max-width: 100%;
+    }
+    
+    .register-card {
+        padding: 20px;
+        border-radius: 8px;
+    }
+    
+    .register-card h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .input-group {
+        margin-bottom: 16px;
+    }
+    
+    .input-group input {
+        padding: 12px 45px 12px 15px;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+    
+    .btn-register {
+        padding: 12px;
+        font-size: 16px;
+        min-height: 48px;
+        border-radius: 5px;
+    }
+    
+    .toggle-password {
+        right: 12px;
+        font-size: 16px;
+        padding: 6px;
+    }
+    
+    .login-text {
+        font-size: 13px;
+    }
+}
+
+/* Small Mobile (iPhone SE dll) */
+@media (max-width: 320px) {
+    body {
+        padding: 10px;
+        padding-top: 20px;
+    }
+    
+    .register-card {
+        padding: 15px;
+    }
+    
+    .register-card h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .input-group {
+        margin-bottom: 14px;
+    }
+    
+    .input-group input {
+        padding: 10px 40px 10px 12px;
+        font-size: 14px;
+    }
+    
+    .btn-register {
+        padding: 10px;
+        font-size: 14px;
+        min-height: 44px;
+    }
+    
+    .toggle-password {
+        right: 10px;
+        font-size: 14px;
+        padding: 4px;
+    }
+    
+    .login-text {
+        font-size: 12px;
+        margin-top: 12px;
+    }
+}
+
+/* Landscape mode untuk mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+    
+    .register-card {
+        padding: 15px 20px;
+    }
+    
+    .input-group {
+        margin-bottom: 12px;
+    }
+    
+    .input-group input {
+        padding: 8px 40px 8px 12px;
+    }
+    
+    .btn-register {
+        padding: 8px;
+        min-height: 40px;
+    }
+}
+
+/* High DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .register-card {
+        box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+    
+    .input-group input {
+        border-width: 1.5px;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+    }
+    
+    .register-card {
+        background-color: #2d2d2d;
+        color: #ffffff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    
+    .register-card h2 {
+        color: #ffffff;
+    }
+    
+    .input-group input {
+        background-color: #3d3d3d;
+        border-color: #555;
+        color: #ffffff;
+    }
+    
+    .input-group input:focus {
+        border-color: #00cc00;
+    }
+    
+    .input-group input::placeholder {
+        color: #999;
+    }
+    
+    .toggle-password {
+        color: #999;
+    }
+    
+    .toggle-password:hover {
+        color: #ccc;
+    }
+    
+    .login-text {
+        color: #ccc;
+    }
+    
+    .login-text a {
+        color: #4d94ff;
+    }
+}
+
+/* Untuk layar sangat lebar */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 500px;
+    }
+    
+    .register-card {
+        padding: 35px 40px;
+    }
+}
+
+/* Aksesibilitas - focus states */
+.btn-register:focus,
+.input-group input:focus {
+    outline: 2px solid #00b300;
+    outline-offset: 2px;
+}
+
+/* Loading state */
+.btn-register:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.btn-register:disabled:hover {
+    background-color: #cccccc;
 }

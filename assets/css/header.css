@@ -139,7 +139,7 @@ body {
     .judul {
         font-size: 24px;
         margin: 20px 0;
-        padding-right: 50px; /* Memberi ruang untuk tombol hamburger */
+        padding-right: 50px;
     }
 }
 

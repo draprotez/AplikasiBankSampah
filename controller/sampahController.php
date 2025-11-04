@@ -2,17 +2,11 @@
 session_start();
 include '../config/database.php';
 include '../models/sampahModels.php';
-
-// Keamanan: Pastikan hanya admin yang login yang bisa menjalankan ini
 if (!isset($_SESSION['is_logged_in'])) { die("ERROR: Akses tidak sah!"); }
-
-// Tentukan aksi (dari form POST atau link GET)
 $action = $_POST['action'] ?? $_GET['action'] ?? '';
 
 switch ($action) {
-    /**
-     * CASE CREATE
-     */
+// case create
     case 'create':
         if (isset($_POST['nama_jenis'])) {
             $data = [
@@ -28,10 +22,7 @@ switch ($action) {
             }
         }
         break;
-
-    /**
-     * CASE UPDATE
-     */
+// case update
     case 'update':
         if (isset($_POST['id_jenis'])) {
             $data = [
@@ -48,10 +39,7 @@ switch ($action) {
             }
         }
         break;
-
-    /**
-     * CASE DELETE
-     */
+// case delete
     case 'delete':
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -59,15 +47,10 @@ switch ($action) {
             if ($result) {
                 header("Location: ../views/kelolaSampahViews.php?success=Data sampah berhasil dihapus!");
             } else {
-                // Pesan error jika data terpakai (Foreign Key constraint)
                 header("Location: ../views/kelolaSampahViews.php?error=Gagal menghapus data! Kemungkinan karena jenis sampah ini sudah dipakai di data setoran.");
             }
         }
         break;
-
-    /**
-     * DEFAULT (Jika aksi tidak dikenal)
-     */
     default:
         header("Location: ../views/kelolaSampahViews.php");
         break;

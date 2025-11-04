@@ -10,7 +10,6 @@ if (!isset($_SESSION['is_logged_in']) || $_SESSION['role'] !== 'admin') {
 }
 
 // Tentukan folder target untuk upload gambar
-// Pastikan folder ini ada dan writable (chmod 755)
 $target_dir = "../assets/images/berita/"; 
 if (!file_exists($target_dir)) {
     mkdir($target_dir, 0755, true);
@@ -38,11 +37,8 @@ switch ($action) {
                 $nama_file_baru = uniqid() . '-' . basename($gambar_baru["name"]);
                 $target_file = $target_dir . $nama_file_baru;
 
-                // Cek ukuran & tipe file (opsional tapi disarankan)
-                // ... (tambahkan validasi di sini) ...
-
+                // Cek ukuran & tipe file
                 if (move_uploaded_file($gambar_baru["tmp_name"], $target_file)) {
-                    // Gambar berhasil di-upload
                 } else {
                     header("Location: ../views/kelolaBeritaViews.php?error_popup=Gagal mengupload gambar!");
                     exit();
@@ -51,8 +47,6 @@ switch ($action) {
                  header("Location: ../views/kelolaBeritaViews.php?error_popup=Gambar wajib di-upload!");
                  exit();
             }
-            // --- Akhir Logika Upload ---
-
             $data = [
                 'judul' => $judul,
                 'konten' => $konten,
@@ -66,7 +60,7 @@ switch ($action) {
                 header("Location: ../views/kelolaBeritaViews.php?error_popup=Gagal menyimpan ke database!");
             }
         }
-        break; // Akhir case 'create'
+        break;
 
 
     case 'update':
@@ -75,18 +69,16 @@ switch ($action) {
             $judul = $_POST['judul'];
             $konten = $_POST['konten'];
             $gambar_baru = $_FILES['gambar'];
-            $gambar_lama = $_POST['gambar_lama']; // Ambil nama file gambar lama
-            $nama_file_untuk_db = $gambar_lama; // Defaultnya, pakai nama lama
+            $gambar_lama = $_POST['gambar_lama'];
+            $nama_file_untuk_db = $gambar_lama;
 
-            // --- Logika Upload Gambar Baru (jika ada) ---
+            // --- Logika Upload Gambar Baru
             if (isset($gambar_baru) && $gambar_baru['error'] == 0 && !empty($gambar_baru['name'])) {
                 $nama_file_baru = uniqid() . '-' . basename($gambar_baru["name"]);
                 $target_file = $target_dir . $nama_file_baru;
 
                 if (move_uploaded_file($gambar_baru["tmp_name"], $target_file)) {
-                    // Gambar baru berhasil di-upload
                     $nama_file_untuk_db = $nama_file_baru;
-                    // Hapus gambar lama dari server
                     if (!empty($gambar_lama) && file_exists($target_dir . $gambar_lama)) {
                         unlink($target_dir . $gambar_lama);
                     }
@@ -95,13 +87,11 @@ switch ($action) {
                     exit();
                 }
             }
-            // --- Akhir Logika Upload ---
-
             $data = [
                 'id' => $id,
                 'judul' => $judul,
                 'konten' => $konten,
-                'gambar' => $nama_file_untuk_db // Kirim nama file (baru atau lama) ke model
+                'gambar' => $nama_file_untuk_db
             ];
 
             $result = updateBerita($conn, $data);
@@ -111,20 +101,20 @@ switch ($action) {
                 header("Location: ../views/kelolaBeritaViews.php?error_popup_edit=Gagal mengupdate database!");
             }
         }
-        break; // Akhir case 'update'
+        break;
 
 
     case 'delete':
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             
-            // 1. Ambil data berita untuk dapat nama file gambar
+            // Ambil data berita untuk dapat nama file gambar
             $berita = getBeritaById($conn, $id);
             if ($berita) {
-                // 2. Hapus data dari database
+                // Hapus data dari database
                 $result = deleteBerita($conn, $id);
                 if ($result) {
-                    // 3. Hapus file gambar dari server
+                    // Hapus file gambar dari server
                     $gambar_lama = $berita['gambar'];
                     if (!empty($gambar_lama) && file_exists($target_dir . $gambar_lama)) {
                         unlink($target_dir . $gambar_lama);
@@ -137,9 +127,7 @@ switch ($action) {
                 header("Location: ../views/kelolaBeritaViews.php?error=Berita tidak ditemukan!");
             }
         }
-        break; // Akhir case 'delete'
-
-
+        break;
     default:
         header("Location: ../views/kelolaBeritaViews.php");
         break;

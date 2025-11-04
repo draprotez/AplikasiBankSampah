@@ -4,21 +4,13 @@ if (!isset($_SESSION['is_logged_in'])) { header("Location: ../login.php"); exit(
 
 include '../config/database.php';
 include '../models/setoranModels.php';
-// --- BARIS DITAMBAHKAN ---
-// Kita perlu model ini untuk mengisi dropdown di popup
 include '../models/kelolaNasabahModels.php';  
 include '../models/sampahModels.php'; 
-// --- AKHIR BARIS DITAMBAHKAN ---
 
-
-// Mengambil semua data setoran (dengan JOIN)
 $setoran_list = getAllSetoran($conn);
-
-// --- BARIS DITAMBAHKAN ---
-// Variabel ini diperlukan untuk form popup
 $users = getAllUsers($conn);
 $sampah_list = getAllSampah($conn);
-// --- AKHIR BARIS DITAMBAHKAN ---
+
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -34,16 +26,9 @@ $sampah_list = getAllSampah($conn);
     <?php include '../includes/header.php'; ?>
 
     <div class="container">
-
-        <!-- <div class="search-container">
-            <input type="text" id="search-kelola" class="search-bar" placeholder="Cari Data Nasabah...">
-        </div> -->
-        
         <button onclick="openForm('createForm')" class="btn btn-tambah">Tambah Setoran</button>
-
         <?php if (isset($_GET['success'])) echo '<div class="alert alert-success">'.htmlspecialchars($_GET['success']).'</div>'; ?>
         <?php if (isset($_GET['error'])) echo '<div class="alert alert-error">'.htmlspecialchars($_GET['error']).'</div>'; ?>
-
         <div class="table-card">
             <table>
                 <thead>

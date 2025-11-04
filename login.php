@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="website icon" type="png" href="assets/images/bsmam.png" />
 </head>
 <body>
     <div class="container">

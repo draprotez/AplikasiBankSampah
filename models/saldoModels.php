@@ -1,19 +1,8 @@
 <?php
-/**
- * MODEL UNTUK MENGHITUNG SALDO NASABAH
- */
 
-/**
- * Menghitung total saldo akhir seorang user
- * Saldo = (Total Pemasukan dari Setoran) - (Total Pengeluaran dari Penarikan)
- *
- * @param mysqli $conn Koneksi database
- * @param int $id_user ID user
- * @return float Total saldo
- */
 function getSaldoUser($conn, $id_user) {
     
-    // 1. Hitung total pemasukan (dari setoran)
+    // Hitung total pemasukan (dari setoran)
     $total_setoran = 0;
     $sql_setoran = "SELECT SUM(total_harga) AS total FROM setoran WHERE id_user = ?";
     $stmt_setoran = $conn->prepare($sql_setoran);
@@ -24,7 +13,7 @@ function getSaldoUser($conn, $id_user) {
         $total_setoran = (float)$result_setoran->fetch_assoc()['total'];
     }
 
-    // 2. Hitung total pengeluaran (dari penarikan)
+    // Hitung total pengeluaran (dari penarikan)
     $total_penarikan = 0;
     $sql_penarikan = "SELECT SUM(jumlah) AS total FROM penarikan WHERE id_user = ?";
     $stmt_penarikan = $conn->prepare($sql_penarikan);
@@ -35,7 +24,7 @@ function getSaldoUser($conn, $id_user) {
         $total_penarikan = (float)$result_penarikan->fetch_assoc()['total'];
     }
 
-    // 3. Kembalikan saldo akhir
+    // Kembalikan saldo akhir
     return $total_setoran - $total_penarikan;
 }
 ?>

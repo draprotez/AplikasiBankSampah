@@ -6,7 +6,6 @@ if(!isset($_SESSION['is_logged_in']) || $_SESSION['role'] !=='admin') {
 }
 
 include '../config/database.php';
-// Pastikan model ini mengambil 'nama_user' dari tabel users melalui JOIN
 include '../models/setoranModels.php'; 
 
 $setoran_list = getAllSetoran($conn);
@@ -20,6 +19,7 @@ $setoran_list = getAllSetoran($conn);
   <title>Dashboard Admin</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/admin-forms.css">
+  <link rel="website icon" type="png" href="../assets/images/bsmam.png" />
 </head>
 <body>
   <?php include '../includes/header.php'; ?>

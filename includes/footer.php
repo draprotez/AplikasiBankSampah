@@ -1,4 +1,5 @@
 <?php
+// Mengambil tahun sekarang untuk ditampilkan di footer
 $tahunSekarang = date("Y"); 
 ?>
 <!DOCTYPE html>

@@ -173,17 +173,55 @@ tbody tr:hover {
 }
 
 /* Column Width Classes */
-.col-id { width: 10%; text-align: center; }
-.col-tanggal { width: 15%; text-align: center; }
-.col-nama { width: 25%; text-align: left; padding-left: 20px; }
-.col-jenis { width: 18%; text-align: left; padding-left: 20px; }
-.col-kategori { width: 20%; text-align: center; }
-.col-metode { width: 20%; text-align: center; }
-.col-berat { width: 12%; text-align: center; }
-.col-jumlah { width: 25%; text-align: right; padding-right: 20px; }
-.col-harga { width: 20%; text-align: right; padding-right: 20px; }
-.col-saldo { width: 25%; text-align: right; padding-right: 20px; }
-.col-aksi { width: 20%; text-align: center; }
+.col-id {
+  width: 10%;
+  text-align: center;
+}
+.col-tanggal {
+  width: 15%;
+  text-align: center;
+}
+.col-nama {
+  width: 25%;
+  text-align: left;
+  padding-left: 20px;
+}
+.col-jenis {
+  width: 18%;
+  text-align: left;
+  padding-left: 20px;
+}
+.col-kategori {
+  width: 20%;
+  text-align: center;
+}
+.col-metode {
+  width: 20%;
+  text-align: center;
+}
+.col-berat {
+  width: 12%;
+  text-align: center;
+}
+.col-jumlah {
+  width: 25%;
+  text-align: right;
+  padding-right: 20px;
+}
+.col-harga {
+  width: 20%;
+  text-align: right;
+  padding-right: 20px;
+}
+.col-saldo {
+  width: 25%;
+  text-align: right;
+  padding-right: 20px;
+}
+.col-aksi {
+  width: 20%;
+  text-align: center;
+}
 
 /* ----- 6. BUTTON STYLES ----- */
 .btn {
@@ -217,9 +255,15 @@ tbody tr:hover {
   border-radius: var(--border-radius);
 }
 
-.btn-konfirmasi { background-color: var(--primary-color); }
-.btn-edit { background-color: var(--success-color); }
-.btn-delete { background-color: var(--danger-color); }
+.btn-konfirmasi {
+  background-color: var(--primary-color);
+}
+.btn-edit {
+  background-color: var(--success-color);
+}
+.btn-delete {
+  background-color: var(--danger-color);
+}
 
 .btn-submit {
   background-color: var(--success-color);
@@ -302,7 +346,7 @@ tbody tr:hover {
 }
 
 .popup-form {
-  background-color: #EAEAEA; /* Warna abu-abu dari gambar */
+  background-color: #eaeaea; /* Warna abu-abu dari gambar */
   padding: 30px 40px;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -322,10 +366,10 @@ tbody tr:hover {
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 10px; /* Sesuai gambar */
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 15px;
   box-sizing: border-box;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   transition: var(--transition);
 }
 
@@ -378,24 +422,60 @@ tbody tr:hover {
   border: 1px solid transparent;
 }
 
-.alert-success { background-color: #d4edda; color: #155724; border-color: #c3e6cb; }
-.alert-error { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }
-.alert-warning { background-color: #fff3cd; color: #856404; border-color: #ffeaa7; }
-.alert-info { background-color: #d1ecf1; color: #0c5460; border-color: #bee5eb; }
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
+}
+.alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+}
+.alert-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border-color: #ffeaa7;
+}
+.alert-info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border-color: #bee5eb;
+}
 
 /* ----- 10. UTILITY CLASSES ----- */
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
 
-.mb-0 { margin-bottom: 0; }
-.mb-1 { margin-bottom: 10px; }
-.mb-2 { margin-bottom: 20px; }
-.mb-3 { margin-bottom: 30px; }
+.mb-0 {
+  margin-bottom: 0;
+}
+.mb-1 {
+  margin-bottom: 10px;
+}
+.mb-2 {
+  margin-bottom: 20px;
+}
+.mb-3 {
+  margin-bottom: 30px;
+}
 
-.mt-1 { margin-top: 10px; }
-.mt-2 { margin-top: 20px; }
-.mt-3 { margin-top: 30px; }
+.mt-1 {
+  margin-top: 10px;
+}
+.mt-2 {
+  margin-top: 20px;
+}
+.mt-3 {
+  margin-top: 30px;
+}
 
 /* Link Styles */
 .back-link {
@@ -438,25 +518,80 @@ hr {
 
 /* ----- 11. RESPONSIVE DESIGN ----- */
 @media (max-width: 768px) {
-  .container { width: 95%; margin: 20px auto; }
-  .table-card { padding: 15px; }
-  th, td { padding: 12px 8px; font-size: 14px; }
-  .btn { padding: 6px 12px; font-size: 12px; margin-right: 5px; margin-bottom: 5px; }
-  .header-nav nav a { padding: 15px 20px; font-size: 14px; }
-  .search-bar { width: 100%; }
-  .form-control, .form-select { max-width: 100%; }
-  .popup-form { width: 90%; padding: 20px 25px; }
-  .popup-form .form-actions { flex-direction: column; gap: 10px; }
+  .container {
+    width: 95%;
+    margin: 20px auto;
+  }
+  .table-card {
+    padding: 15px;
+  }
+  th,
+  td {
+    padding: 12px 8px;
+    font-size: 14px;
+  }
+  .btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  .header-nav nav a {
+    padding: 15px 20px;
+    font-size: 14px;
+  }
+  .search-bar {
+    width: 100%;
+  }
+  .form-control,
+  .form-select {
+    max-width: 100%;
+  }
+  .popup-form {
+    width: 90%;
+    padding: 20px 25px;
+  }
+  .popup-form .form-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
   /* Reset column widths on mobile */
-  .col-id, .col-tanggal, .col-nama, .col-jenis, .col-kategori, .col-metode, .col-berat, .col-jumlah, .col-harga, .col-saldo, .col-aksi { width: auto; }
+  .col-id,
+  .col-tanggal,
+  .col-nama,
+  .col-jenis,
+  .col-kategori,
+  .col-metode,
+  .col-berat,
+  .col-jumlah,
+  .col-harga,
+  .col-saldo,
+  .col-aksi {
+    width: auto;
+  }
 }
 
 @media (max-width: 480px) {
-  .header-nav nav { flex-wrap: wrap; justify-content: center; }
-  .header-nav nav a { padding: 12px 15px; font-size: 13px; flex: 1; min-width: 120px; text-align: center; }
-  h1 { font-size: 24px; }
-  h2 { font-size: 20px; }
-  .popup-form { padding: 15px 20px; }
+  .header-nav nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .header-nav nav a {
+    padding: 12px 15px;
+    font-size: 13px;
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  .popup-form {
+    padding: 15px 20px;
+  }
 }
 
 /* ----- CSS TAMBAHAN UNTUK POPUP KONFIRMASI DELETE ----- */

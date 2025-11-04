@@ -1,8 +1,5 @@
 <?php
-/**
- * MODEL UNTUK MANAJEMEN SETORAN
- * Mengambil semua data setoran dengan JOIN
- */
+// Fungsi untuk mengambil semua data setoran dengan JOIN
 function getAllSetoran($conn) {
     $sql = "SELECT s.*, u.nama AS nama_user, js.nama_jenis 
             FROM setoran s
@@ -13,9 +10,7 @@ function getAllSetoran($conn) {
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
-/**
- * Mengambil satu data setoran berdasarkan ID
- */
+// Fungsi untuk mengambil data setoran berdasarkan ID
 function getSetoranById($conn, $id) {
     $sql = "SELECT * FROM setoran WHERE id_setoran = ?";
     $stmt = $conn->prepare($sql);
@@ -24,10 +19,7 @@ function getSetoranById($conn, $id) {
     $result = $stmt->get_result();
     return $result->fetch_assoc();
 }
-
-/**
- * Memasukkan setoran baru ke database
- */
+// Fungsi untuk menambahkan data setoran
 function insertSetoran($conn, $data) {
     $sql = "INSERT INTO setoran (id_user, id_jenis, berat_kg, total_harga, tanggal_setor) 
             VALUES (?, ?, ?, ?, ?)";
@@ -36,15 +28,13 @@ function insertSetoran($conn, $data) {
         $data['id_user'], 
         $data['id_jenis'], 
         $data['berat_kg'], 
-        $data['total_harga'], // Harga yang sudah dihitung
+        $data['total_harga'],
         $data['tanggal_setor']
     );
     return $stmt->execute();
 }
 
-/**
- * Mengupdate data setoran
- */
+// Fungsi untuk memperbarui data setoran
 function updateSetoran($conn, $data) {
     $sql = "UPDATE setoran SET id_user = ?, id_jenis = ?, berat_kg = ?, total_harga = ?, tanggal_setor = ?
             WHERE id_setoran = ?";
@@ -53,16 +43,13 @@ function updateSetoran($conn, $data) {
         $data['id_user'], 
         $data['id_jenis'], 
         $data['berat_kg'], 
-        $data['total_harga'], // Harga yang sudah dihitung ulang
+        $data['total_harga'],
         $data['tanggal_setor'],
         $data['id_setoran']
     );
     return $stmt->execute();
 }
-
-/**
- * Menghapus data setoran
- */
+// Fungsi untuk menghapus data setoran
 function deleteSetoran($conn, $id) {
     $sql = "DELETE FROM setoran WHERE id_setoran = ?";
     $stmt = $conn->prepare($sql);

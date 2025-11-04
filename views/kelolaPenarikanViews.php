@@ -4,19 +4,11 @@ if (!isset($_SESSION['is_logged_in'])) { header("Location: ../login.php"); exit(
 
 include '../config/database.php';
 include '../models/penarikanModels.php';
-// --- BARIS DITAMBAHKAN ---
-// Diperlukan untuk dropdown di popup
 include '../models/kelolaNasabahModels.php'; 
 include '../models/saldoModels.php'; 
-// --- AKHIR BARIS DITAMBAHKAN ---
 
-// Mengambil semua data histori penarikan
 $penarikan_list = getAllPenarikan($conn);
-
-// --- BARIS DITAMBAHKAN ---
-// Variabel ini diperlukan untuk form popup
 $users = getAllUsers($conn);
-// --- AKHIR BARIS DITAMBAHKAN ---
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -32,10 +24,6 @@ $users = getAllUsers($conn);
     <?php include '../includes/header.php'; ?>
 
     <div class="container">
-
-        <!-- <div class="search-container">
-            <input type="text" id="search-kelola" class="search-bar" placeholder="Cari Data Nasabah...">
-        </div> -->
 
         <button onclick="openForm('createForm')" class="btn btn-tambah">Tambah Penarikan</button>
 
@@ -91,7 +79,6 @@ $users = getAllUsers($conn);
                     <option value="">-- Pilih Nasabah --</option>
                     <?php foreach ($users as $user): ?>
                         <?php
-                        // Panggil model saldo untuk setiap user
                         $saldo = getSaldoUser($conn, $user['id_user']);
                         ?>
                         <option value="<?php echo $user['id_user']; ?>">
@@ -134,7 +121,7 @@ $users = getAllUsers($conn);
             document.getElementById(modalId).style.display = 'none';
         }
         
-        // Cek jika ada error popup dari URL, langsung tampilkan modal
+        // Cek jika ada error popup dari URL
         <?php if (isset($_GET['error_popup'])): ?>
             openForm('createForm');
         <?php endif; ?>

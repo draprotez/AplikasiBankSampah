@@ -103,7 +103,7 @@ function confirmDelete() {
     try {
         const deleteUrl = document.getElementById('deleteUrlInput').value;
         if (deleteUrl) {
-            window.location.href = deleteUrl; // Arahkan ke URL Hapus
+            window.location.href = deleteUrl;
         } else {
             alert('Error: URL Hapus tidak ditemukan!');
         }
