@@ -43,7 +43,6 @@ $setoran_list = getAllSetoran($conn);
         <thead>
           <tr>
             <th class="col-nama">Nama Nasabah</th> 
-            
             <th class="col-nama">Nama Sampah</th>
             <th class="col-tanggal">Tanggal</th>
             <th class="col-berat">Berat (kg)</th>

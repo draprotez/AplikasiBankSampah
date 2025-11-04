@@ -32,7 +32,7 @@ $sampah_list = getAllSampah($conn);
                 <thead>
                     <tr>
                         <th class="col-id">ID</th>
-                        <th class="col-nama">Nama Jenis</th>
+                        <th class="col-nama-jenis">Nama Jenis</th>
                         <th class="col-kategori">Kategori</th>
                         <th class="col-harga">Harga per Kg (Rp)</th>
                         <th class="col-aksi">Aksi</th>
