@@ -24,7 +24,7 @@ $tahunSekarang = date("Y");
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bank Sampah Anda</title>
   <link rel="website icon" type="png" href="assets/images/bsmam.png" />
-  <link rel="stylesheet" href="assets/css/style-index.css">
+  <link rel="stylesheet" href="assets/css/styles-index.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/feather-icons"></script>
   <style>
@@ -95,9 +95,70 @@ $tahunSekarang = date("Y");
       </div>
     </div>
 
-    <h2>Struktural Kepengurusan</h2>
+    <h2>Profil Pengurus Bank Sampah Migunani Asri Madani</h2>
     <div class="struktur-text">
-      <img src="assets/images/struktur.png" alt="">
+        <table>
+            <tr>
+                <td class="col-1"><img src="assets/images/profil/1.png" alt="">
+    <p>PURWONO <br> PEMBINA </p></td>
+                <td class="col-2"><img src="assets/images/profil/2.png" alt="">
+    <p>BAMBANG SETYO TRIWIYANTO<br> PEMBINA </p></td>
+                <td class="col-3"><img src="assets/images/profil/3.png" alt="">
+    <p>NURHILALUDIN <br> PEMBINA </p></td>
+            </tr>
+            <tr>
+                <td class="col-1"><img src="assets/images/profil/4.png" alt="">
+    <p>VIVI FITRIANI <br> KETUA </p></td>
+                <td class="col-2"><img src="assets/images/profil/5.png" alt="">
+    <p>SHINTA DEWI <br> SEKRETARIS </p></td>
+                <td class="col-3"><img src="assets/images/profil/7.png" alt="">
+    <p>SUPRAMININGSIH  <br> BENDAHARA </p></td>
+            </tr>
+            <tr>
+                <td class="col-1"><img src="assets/images/profil/6.png" alt="">
+    <p>CHRISTINA IKA ANDRIWARINI  <br> ANGGOTA(PENIMBANGAN) </p></td>
+                <td class="col-2"><img src="assets/images/profil/11.png" alt="">
+    <p>ROHAYAH <br> ANGGOTA(PENIMBANGAN) </p></td>
+                <td class="col-3"><img src="assets/images/profil/12.png" alt="">
+    <p>YANI ASTUTI  <br> ANGGOTA(PENIMBANGAN) </p></td>
+            </tr>
+            <tr>
+                <td class="col-1"><img src="assets/images/profil/16.png" alt="">
+    <p>SISTI IRAWATI <br> ANGGOTA(PENIMBANGAN) </p></td>
+                <td class="col-2"><img src="assets/images/profil/17.png" alt="">
+    <p>NITA LESTARI YANTI <br> ANGGOTA(PENIMBANGAN) </p></td>
+            </tr>
+            <tr>
+                <td class="col-1"><img src="assets/images/profil/8.png" alt="">
+    <p>ISTININGSIH RAHAYU  <br> ANGGOTA(PENCATATAN) </p></td>
+                <td class="col-2"><img src="assets/images/profil/9.png" alt="">
+    <p>ATI KARMILA  <br> ANGGOTA(PENCATATAN) </p></td>
+                <td class="col-3"><img src="assets/images/profil/10.png" alt="">
+    <p>YATUN <br> ANGGOTA(PENCATATAN)  </p></td>
+            </tr>
+            <tr>
+                <td class="col-1"><img src="assets/images/profil/13.png" alt="">
+    <p>SITI AINUN RANGKUTI  <br> ANGGOTA(PENCATATAN) </p></td>
+                <td class="col-2"><img src="assets/images/profil/15.png" alt="">
+    <p>TRI DATI NINGSIH <br> ANGGOTA(PENCATATAN) </p></td>
+                <td class="col-3"><img src="assets/images/profil/14.png" alt="">
+    <p>KARTIKA <br> ANGGOTA(PEMILAHAN) </p></td>
+            </tr>
+            <tr>
+                <td class="col-1"><img src="assets/images/profil/18.png" alt="">
+    <p>YULIANSIH <br> ANGGOTA </p></td>
+                <td class="col-2"><img src="assets/images/profil/19.png" alt="">
+    <p>TARMINI <br> ANGGOTA </p></td>
+                <td class="col-3"><img src="assets/images/profil/20.png" alt="">
+    <p>IDA NURSANTI <br> ANGGOTA </p></td>
+            </tr>
+            <tr>
+                <td class="col-1"><img src="assets/images/profil/21.png" alt="">
+    <p>IDA NURSANTI <br> ANGGOTA </p></td>
+                <td class="col-2"><img src="assets/images/profil/22.png" alt="">
+    <p>RAMTONO <br> ANGGOTA(TIDAK TETAP) </p></td>
+            </tr>
+        </table>
     </div>
 
     <!-- Struktur Carousel -->

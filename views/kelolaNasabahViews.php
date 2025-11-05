@@ -18,6 +18,7 @@ $users = getAllUsers($conn);
     <title>Kelola Nasabah (Users)</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/admin-forms.css">
+    <link rel="website icon" type="png" href="../assets/images/bsmam.png" />
 </head>
 <body>
 

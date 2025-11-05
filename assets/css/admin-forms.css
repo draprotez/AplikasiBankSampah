@@ -516,7 +516,100 @@ hr {
   margin: 25px 0;
 }
 
-/* ----- 11. RESPONSIVE DESIGN ----- */
+/* ----- 11. CSS UNTUK PROFIL PENGURUS CAROUSEL (BARU) ----- */
+/* (CSS ini untuk halaman index.php, tapi digabung di sini sesuai permintaan) */
+
+.profil-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  max-width: 900px; /* Tampilkan 3 kartu sekaligus (300px * 3) */
+  margin: 30px auto;
+}
+
+.profil-track-wrapper {
+  width: 100%;
+  overflow: hidden; /* Sembunyikan kartu di luar area */
+}
+
+.profil-track {
+  display: flex; /* Membuat semua kartu sejajar horizontal */
+  gap: 20px; /* Jarak antar kartu */
+  transition: transform 0.5s ease-in-out;
+}
+
+.profil-card {
+  display: flex; /* Ini membuat gambar dan teks sejajar */
+  align-items: center; /* Vertikal di tengah */
+  background: #ffffff;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  width: 280px; /* Lebar kartu (sesuaikan dengan wrapper) */
+  flex-shrink: 0; /* Mencegah kartu mengecil */
+  gap: 15px; /* Jarak antara gambar dan teks */
+}
+
+.profil-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* Membuat gambar profil bulat */
+  object-fit: cover; /* Memastikan gambar pas */
+  border: 2px solid var(--border-color);
+}
+
+.profil-info {
+  flex-grow: 1; /* Ambil sisa ruang */
+}
+
+.profil-info p {
+  margin: 0;
+  text-align: left;
+}
+
+.profil-info .nama {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text-color);
+}
+
+.profil-info .jabatan {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Tombol Navigasi Carousel */
+.arrow.profil-prev,
+.arrow.profil-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 5;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+.arrow.profil-prev:hover,
+.arrow.profil-next:hover {
+  background-color: var(--light-color);
+  color: var(--primary-color);
+}
+.arrow.profil-prev {
+  left: -20px; /* Posisi di kiri */
+}
+.arrow.profil-next {
+  right: -20px; /* Posisi di kanan */
+}
+
+/* ----- 12. RESPONSIVE DESIGN ----- */
 @media (max-width: 768px) {
   .container {
     width: 95%;
@@ -569,6 +662,36 @@ hr {
   .col-aksi {
     width: auto;
   }
+
+  /* Responsive untuk Profil Carousel (Tablet) */
+  .profil-carousel {
+    max-width: 600px; /* Tampilkan 2 kartu */
+  }
+}
+
+@media (max-width: 600px) {
+  /* Responsive untuk Profil Carousel (Mobile) */
+  /* (Breakpoint ini lebih spesifik dari 480px) */
+  .profil-carousel {
+    max-width: 280px; /* Tampilkan 1 kartu */
+  }
+  .profil-card {
+    flex-direction: column; /* Tumpuk vertikal */
+    text-align: center;
+    width: 250px; /* Sesuaikan lebar kartu untuk 1 tampilan */
+  }
+  .profil-info {
+    text-align: center;
+  }
+  .profil-info .nama {
+    margin-top: 10px;
+  }
+  .arrow.profil-prev {
+    left: -10px;
+  }
+  .arrow.profil-next {
+    right: -10px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -590,72 +713,69 @@ hr {
   td {
     font-size: 10px;
   }
-.col-nama {
-  width: 24%;
-  padding-left: 4px;
-  padding-right: 10px;
-  text-align: left;
-}
-.col-tanggal {
-  width: 20%;
-  padding-left: 1px;
-  padding-right: 10px;
-  text-align: center;
-}
-
-.col-jenis {
-  width: 20%;
-  padding-left: 10px;
-  padding-right: 10px;
-  text-align: left;
-}
-
-.col-berat {
-  width: 18%;
-  padding-left: 15px;
-  padding-right: 15px;
-  text-align: center;
-}
-
-.col-harga {
-  width: 22%;
-  padding-left: 15px;
-  padding-right: 20px;
-  text-align: right;
-  font-weight: 600;
-}
-.col-metode {
-  width: 20%;
-  padding-left: 10px;
-  padding-right: 10px;
-  text-align: center;
-}
-.col-id {
-  width: 12%;
-  padding-left: 5px;
-  padding-right: 10px;
-  text-align: center;
-}
-.col-nama-jenis {
-  width: 28%;
-  padding-left: 5px;
-  padding-right: 10px;
-  text-align: left;
-}
-.col-kategori {
-  width: 20%;
-  padding-left: 5px;
-  padding-right: 10px;
-  text-align: center;
-}
-.col-jumlah {
-  width: 22%;
-  padding-left: 15px;
-  padding-right: 20px;
-  text-align: right;
-  font-weight: 600;
-}
-.btn-edit,
+  .col-nama {
+    width: 24%;
+    padding-left: 4px;
+    padding-right: 10px;
+    text-align: left;
+  }
+  .col-tanggal {
+    width: 20%;
+    padding-left: 1px;
+    padding-right: 10px;
+    text-align: center;
+  }
+  .col-jenis {
+    width: 20%;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
+  }
+  .col-berat {
+    width: 18%;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+  }
+  .col-harga {
+    width: 22%;
+    padding-left: 15px;
+    padding-right: 20px;
+    text-align: right;
+    font-weight: 600;
+  }
+  .col-metode {
+    width: 20%;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+  }
+  .col-id {
+    width: 12%;
+    padding-left: 5px;
+    padding-right: 10px;
+    text-align: center;
+  }
+  .col-nama-jenis {
+    width: 28%;
+    padding-left: 5px;
+    padding-right: 10px;
+    text-align: left;
+  }
+  .col-kategori {
+    width: 20%;
+    padding-left: 5px;
+    padding-right: 10px;
+    text-align: center;
+  }
+  .col-jumlah {
+    width: 22%;
+    padding-left: 15px;
+    padding-right: 20px;
+    text-align: right;
+    font-weight: 600;
+  }
+  .btn-edit,
   .btn-delete {
     font-size: 8px;
     padding: 4px 6px;

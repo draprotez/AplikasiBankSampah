@@ -61,6 +61,7 @@ usort($transaksi, function($a, $b) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard Nasabah</title>
   <link rel="stylesheet" href="../assets/css/nasabah.css">
+  <link rel="website icon" type="png" href="../assets/images/bsmam.png" />
 </head>
 <body>
 
