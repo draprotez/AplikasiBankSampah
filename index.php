@@ -28,7 +28,8 @@ $tahunSekarang = date("Y");
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/feather-icons"></script>
   <style>
-    
+    /* ===== PUSATKAN TABEL DAN KONTEN PROFIL PENGURUS ===== */
+
   </style>
 </head>
 <body>
@@ -97,65 +98,65 @@ $tahunSekarang = date("Y");
 
     <h2>Profil Pengurus Bank Sampah Migunani Asri Madani</h2>
     <div class="struktur-text">
-        <table>
+        <table class="profil">
             <tr>
-                <td class="col-1"><img src="assets/images/profil/1.png" alt="">
+                <td class="col-1" style="margin-left: 30px;"><img src="assets/images/profil/1.png" alt="">
     <p>PURWONO <br> PEMBINA </p></td>
-                <td class="col-2"><img src="assets/images/profil/2.png" alt="">
+                <td class="col-2" style="margin-left: 30px;"><img src="assets/images/profil/2.png" alt="">
     <p>BAMBANG SETYO TRIWIYANTO<br> PEMBINA </p></td>
-                <td class="col-3"><img src="assets/images/profil/3.png" alt="">
+                <td class="col-3" style="margin-left: 30px;"><img src="assets/images/profil/3.png" alt="">
     <p>NURHILALUDIN <br> PEMBINA </p></td>
             </tr>
             <tr>
-                <td class="col-1"><img src="assets/images/profil/4.png" alt="">
+                <td class="col-1" style="margin-left: 30px;"><img src="assets/images/profil/4.png" alt="">
     <p>VIVI FITRIANI <br> KETUA </p></td>
-                <td class="col-2"><img src="assets/images/profil/5.png" alt="">
+                <td class="col-2" style="margin-left: 30px;"><img src="assets/images/profil/5.png" alt="">
     <p>SHINTA DEWI <br> SEKRETARIS </p></td>
-                <td class="col-3"><img src="assets/images/profil/7.png" alt="">
+                <td class="col-3" style="margin-left: 30px;"><img src="assets/images/profil/7.png" alt="">
     <p>SUPRAMININGSIH  <br> BENDAHARA </p></td>
             </tr>
             <tr>
-                <td class="col-1"><img src="assets/images/profil/6.png" alt="">
+                <td class="col-1" style="margin-left: 30px;"><img src="assets/images/profil/6.png" alt="">
     <p>CHRISTINA IKA ANDRIWARINI  <br> ANGGOTA(PENIMBANGAN) </p></td>
-                <td class="col-2"><img src="assets/images/profil/11.png" alt="">
+                <td class="col-2" style="margin-left: 30px;"><img src="assets/images/profil/11.png" alt="">
     <p>ROHAYAH <br> ANGGOTA(PENIMBANGAN) </p></td>
-                <td class="col-3"><img src="assets/images/profil/12.png" alt="">
+                <td class="col-3" style="margin-left: 30px;"><img src="assets/images/profil/12.png" alt="">
     <p>YANI ASTUTI  <br> ANGGOTA(PENIMBANGAN) </p></td>
             </tr>
             <tr>
-                <td class="col-1"><img src="assets/images/profil/16.png" alt="">
+                <td class="col-1" style="margin-left: 30px;"><img src="assets/images/profil/16.png" alt="">
     <p>SISTI IRAWATI <br> ANGGOTA(PENIMBANGAN) </p></td>
-                <td class="col-2"><img src="assets/images/profil/17.png" alt="">
+                <td class="col-2" style="margin-left: 30px;"><img src="assets/images/profil/17.png" alt="">
     <p>NITA LESTARI YANTI <br> ANGGOTA(PENIMBANGAN) </p></td>
             </tr>
             <tr>
-                <td class="col-1"><img src="assets/images/profil/8.png" alt="">
+                <td class="col-1" style="margin-left: 30px;"><img src="assets/images/profil/8.png" alt="">
     <p>ISTININGSIH RAHAYU  <br> ANGGOTA(PENCATATAN) </p></td>
-                <td class="col-2"><img src="assets/images/profil/9.png" alt="">
+                <td class="col-2" style="margin-left: 30px;"><img src="assets/images/profil/9.png" alt="">
     <p>ATI KARMILA  <br> ANGGOTA(PENCATATAN) </p></td>
-                <td class="col-3"><img src="assets/images/profil/10.png" alt="">
+                <td class="col-3" style="margin-left: 30px;"><img src="assets/images/profil/10.png" alt="">
     <p>YATUN <br> ANGGOTA(PENCATATAN)  </p></td>
             </tr>
             <tr>
-                <td class="col-1"><img src="assets/images/profil/13.png" alt="">
+                <td class="col-1" style="margin-left: 30px;"><img src="assets/images/profil/13.png" alt="">
     <p>SITI AINUN RANGKUTI  <br> ANGGOTA(PENCATATAN) </p></td>
-                <td class="col-2"><img src="assets/images/profil/15.png" alt="">
+                <td class="col-2" style="margin-left: 30px;"><img src="assets/images/profil/15.png" alt="">
     <p>TRI DATI NINGSIH <br> ANGGOTA(PENCATATAN) </p></td>
-                <td class="col-3"><img src="assets/images/profil/14.png" alt="">
+                <td class="col-3" style="margin-left: 30px;"><img src="assets/images/profil/14.png" alt="">
     <p>KARTIKA <br> ANGGOTA(PEMILAHAN) </p></td>
             </tr>
             <tr>
-                <td class="col-1"><img src="assets/images/profil/18.png" alt="">
+                <td class="col-1" style="margin-left: 30px;"><img src="assets/images/profil/18.png" alt="">
     <p>YULIANSIH <br> ANGGOTA </p></td>
-                <td class="col-2"><img src="assets/images/profil/19.png" alt="">
+                <td class="col-2" style="margin-left: 30px;"><img src="assets/images/profil/19.png" alt="">
     <p>TARMINI <br> ANGGOTA </p></td>
-                <td class="col-3"><img src="assets/images/profil/20.png" alt="">
+                <td class="col-3" style="margin-left: 30px;"><img src="assets/images/profil/20.png" alt="">
     <p>IDA NURSANTI <br> ANGGOTA </p></td>
             </tr>
             <tr>
-                <td class="col-1"><img src="assets/images/profil/21.png" alt="">
+                <td class="col-1" style="margin-left: 30px;"><img src="assets/images/profil/21.png" alt="">
     <p>IDA NURSANTI <br> ANGGOTA </p></td>
-                <td class="col-2"><img src="assets/images/profil/22.png" alt="">
+                <td class="col-2" style="margin-left: 30px;"><img src="assets/images/profil/22.png" alt="">
     <p>RAMTONO <br> ANGGOTA(TIDAK TETAP) </p></td>
             </tr>
         </table>
